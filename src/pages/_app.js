@@ -1,10 +1,14 @@
+import { store } from "@/redux/store";
 import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
       <script
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.x.x/dist/alpine.min.js"
         defer

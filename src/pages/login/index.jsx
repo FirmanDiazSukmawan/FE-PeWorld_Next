@@ -1,14 +1,63 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bg from "../../assets/bg1.png";
 import Link from "next/link";
 import { Tab, Tabs } from "react-bootstrap";
+import axios from "axios";
+import { url } from "@/redux/baseUrl/url";
+import { useDispatch } from "react-redux";
+import { loginRecruiter, loginWorker } from "@/redux/reducer/auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const dispatch = useDispatch()
+  const router = useRouter()
+ 
+
+  const handleLoginWorker = async() => {
+    try {
+    await dispatch(loginWorker({email,password}))
+     const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/")
+    }
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleLoginRecruiter = async() => {
+    try {
+    await dispatch(loginRecruiter({email,password}))
+     const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/")
+    }
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.push("/");
+    }
+  }, [router]);
+
+
   return (
     <>
+    
       <main>
+      <ToastContainer/>
         <div className="flex bg-[#F6F7F8] ">
           <div className="hidden lg:flex md:hidden  h-[100vh] w-[50vw] items-center justify-center px-5 ">
             <div className="h-[90%] w-[100%] relative ">
@@ -48,7 +97,9 @@ export default function Index() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={email}
+                  onChange={(e)=> setEmail(e.target.value)}
+                  className="block w-full pl-2 rounded-md border-2 border-slate-400 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               <label
@@ -63,7 +114,9 @@ export default function Index() {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   autoComplete="password"
-                  className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={password}
+                  onChange={(e)=> setPassword(e.target.value)}
+                  className="block w-full pl-2 rounded-md border-2 border-slate-400 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 <button
                   className="absolute top-0 right-0 m-2"
@@ -74,7 +127,7 @@ export default function Index() {
               </div>
               <div className="text-right lg:text-base md:text-base text-xs py-2"> Lupa Kata sandi</div>
                   <div className="flex flex-col items-center justify-center pt-2">
-                      <button class="rounded-md bg-[#FBB017] w-[100%] h-[5vh] hover:bg-blue-200 text-white text-base">
+                      <button className="rounded-md bg-[#FBB017] w-[100%] h-[5vh] hover:bg-blue-200 text-white text-base" onClick={handleLoginWorker}>
                         Masuk
                       </button>
                       <h5 className="font-normal text-base text-[#1F2A36] pt-2">
@@ -103,7 +156,9 @@ export default function Index() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      value={email}
+                  onChange={(e)=> setEmail(e.target.value)}
+                      className="block w-full pl-2 rounded-md border-2 border-slate-400 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                   <label
@@ -118,7 +173,9 @@ export default function Index() {
                       name="password"
                       type={showPassword ? "text" : "password"}
                       autoComplete="password"
-                      className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      value={password}
+                  onChange={(e)=> setPassword(e.target.value)}
+                      className="block w-full pl-2 rounded-md border-2 border-slate-400 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     <button
                       className="absolute top-0 right-0 m-2"
@@ -129,7 +186,7 @@ export default function Index() {
                   </div>
                   <div className="text-right lg:text-base md:text-base text-xs py-2"> Lupa Kata sandi</div>
                   <div className="flex flex-col items-center justify-center pt-2">
-                      <button class="rounded-md bg-[#FBB017] w-[100%] h-[5vh] hover:bg-blue-200 text-white text-base">
+                      <button className="rounded-md bg-[#FBB017] w-[100%] h-[5vh] hover:bg-blue-200 text-white text-base" onClick={handleLoginRecruiter}>
                         Masuk
                       </button>
                       <h5 className="font-normal text-base text-[#1F2A36] pt-2">
