@@ -2,8 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import img from "../../assets/chatpp.png";
+import image from "../../assets/foto3.png";
+
 import Notifcation from "../notification/notifcation";
 import { useRouter } from "next/router";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Avatar,
+  User,
+} from "@nextui-org/react";
 
 function NavbarLogin() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +29,12 @@ function NavbarLogin() {
   };
 
   const handleProfile = () => {
-    // console.log(handleProfile, "console");
     router.push("/Profile");
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    router.push("/login");
   };
 
   return (
@@ -68,15 +82,32 @@ function NavbarLogin() {
                   {isNotificationVisible && <Notifcation />}
                 </i>
                 <i className="bi bi-envelope" style={{ marginRight: 20 }}></i>
-                <div
-                  className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center"
-                  onClick={handleProfile}
-                >
-                  <Image
-                    src={img}
-                    alt="img"
-                    className="w-[100%] h-[100%] rounded-[50%]"
-                  />
+
+                <div className="flex items-center gap-4">
+                  <Dropdown placement="bottom-start">
+                    <DropdownTrigger>
+                      <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
+                        <Image
+                          src={img}
+                          alt="img"
+                          className="w-[100%] h-[100%] rounded-[50%]"
+                        />
+                      </div>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label="User Actions" variant="flat">
+                      <DropdownItem key="profile" onClick={handleProfile}>
+                        Profile
+                      </DropdownItem>
+
+                      <DropdownItem
+                        key="logout"
+                        color="danger"
+                        onClick={logout}
+                      >
+                        Log Out
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
                 </div>
               </div>
             </div>

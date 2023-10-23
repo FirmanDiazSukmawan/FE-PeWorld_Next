@@ -1,14 +1,17 @@
 import { store } from "@/redux/store";
 import "@/styles/globals.css";
+import { NextUIProvider } from "@nextui-org/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <NextUIProvider>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </NextUIProvider>
       <script
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.x.x/dist/alpine.min.js"
         defer

@@ -1,12 +1,39 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/foto2.png";
 import Navbar from "@/component/Navbar/Navbar";
 import Footer from "@/component/Footer/Footer";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getWorkers,
+  getWorkersSelector,
+} from "@/redux/reducer/worker/getWorkerSlice";
+import axios from "axios";
+import { url } from "@/redux/baseUrl/url";
 
-export default function index() {
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(`${url}/workers`);
+    const workers = res.data;
+
+    // console.log(workers);
+
+    return {
+      props: { workers },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { workers: [] },
+    };
+  }
+}
+
+export default function Index(workers) {
+  // console.log(workers);
+
   return (
     <>
       <div className="overflow-x-hidden">

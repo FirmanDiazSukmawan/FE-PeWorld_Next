@@ -3,7 +3,8 @@ import React from "react";
 import img from "../../assets/bg1.png";
 import { Carousel } from "react-responsive-carousel";
 
-export default function CardCarousel() {
+export default function CardCarousel(workers) {
+  console.log(workers.workers.workers.data);
   // Data untuk kartu-kartu Anda
   const cardsData = [
     {
@@ -30,8 +31,8 @@ export default function CardCarousel() {
 
   // Membagi data kartu menjadi grup yang berisi 3 kartu per grup
   const cardGroups = [];
-  for (let i = 0; i < cardsData.length; i += 3) {
-    cardGroups.push(cardsData.slice(i, i + 3));
+  for (let i = 0; i < workers?.workers?.workers?.data.length; i += 3) {
+    cardGroups.push(workers?.workers?.workers?.data.slice(i, i + 3));
   }
 
   return (
@@ -65,12 +66,17 @@ export default function CardCarousel() {
                     className="w-[130] h-[130] border-4"
                     style={{ borderRadius: "50%", borderColor: "#FBB0175E" }}
                   >
-                    <Image
-                      className="card-img-top"
-                      src={img}
-                      alt="Card image cap"
-                      style={{ borderRadius: "50%", width: 120, height: 120 }}
-                    />
+                    {card.image && (
+                      <Image
+                        className="card-img-top"
+                        src={card.image}
+                        alt="Card image cap"
+                        width={120}
+                        height={120}
+                        style={{ borderRadius: "50%", width: 120, height: 120 }}
+                        blurDataURL="blur"
+                      />
+                    )}
                   </div>
                   <div
                     className="card-body"
@@ -81,12 +87,12 @@ export default function CardCarousel() {
                     }}
                   >
                     <h5 className="card-title" style={{ textAlign: "center" }}>
-                      {card.title}
+                      {card.nama}
                     </h5>
                     <p className="card-text" style={{ textAlign: "center" }}>
-                      {card.text}
+                      {card.profesi}
                     </p>
-                    <p> Desc</p>
+                    <p> {card.description}</p>
                   </div>
                 </div>
               </div>

@@ -9,15 +9,41 @@ import bg3 from "../assets/foto3.png";
 import CardCarousel from "@/component/cardCarousel/cardCarousel";
 import Footer from "@/component/Footer/Footer";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { url } from "@/redux/baseUrl/url";
+import { useEffect, useState } from "react";
+import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const router = useRouter();
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(`${url}/workers`);
+    const workers = res.data;
 
-  const handleProfile = () => {
-    // console.log(handleProfile, "console");
-    router.push("/Profile");
-  };
+    // console.log(workers);
+
+    return {
+      props: { workers },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { workers: [] },
+    };
+  }
+}
+
+export default function Home(workers) {
+  // console.log(workers.workers.data);
+  const [loading, setLoading] = useState(false);
+  const [login, setLogin] = useState("");
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    if (getToken) {
+      setLogin(getToken);
+    }
+  }, []);
 
   return (
     <>
@@ -26,7 +52,7 @@ export default function Home() {
       </Head>
 
       <div className="w-screen h-screen overflow-x-hidden">
-        <Navbar />
+        {!login ? <Navbar /> : <NavbarLogin />}
         <main className="flex w-full h-[50vh] lg:h-[75vh] md:[75vh] justify-center lg:flex-row md:flex-row flex-col items-center">
           <div className="flex flex-col w-full md:w-1/2 lg:w-1/2 lg:h-screen md:h-[100%] h-[50%] md:  justify-center items-center px-4">
             <div className="flex flex-col lg:w-[60%] w-[100%]">
@@ -144,11 +170,15 @@ export default function Home() {
         </main>
         <div className="hidden lg:flex md:flex flex-col w-[100%] items-center ">
           <h1> Their opinion about peworld</h1>
+          {/* {loading
+            ? "loading.."
+            : workers?.workers?.data.map((item, index) => ( */}
           <div
           // onClick={handleProfile}
           >
-            <CardCarousel />
+            <CardCarousel workers={workers} />
           </div>
+          {/* ))} */}
         </div>
 
         <div className="flex flex-row justify-around items-center w-screen h-[20vh] my-5">
