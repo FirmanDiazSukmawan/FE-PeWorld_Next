@@ -4,6 +4,7 @@ import axios from "axios";
 import { url } from "../baseUrl/url";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 export const loginWorker = createAsyncThunk(
   "worker/loginWorker",
@@ -13,9 +14,9 @@ export const loginWorker = createAsyncThunk(
         email: email,
         password: password,
       });
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("users_id", response.data.data.workers_id);
-      localStorage.setItem("role", response.data.data.role);
+      Cookies.set("token", response.data.token);
+      Cookies.set("users_id", response.data.data.workers_id);
+      Cookies.set("role", response.data.data.role);
 
       toast.success("login succesfully");
 
@@ -39,9 +40,9 @@ export const loginRecruiter = createAsyncThunk(
         email: email,
         password: password,
       });
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("users_id", response.data.data.recruiter_id);
-      localStorage.setItem("role", response.data.data.role);
+      Cookies.set("token", response.data.token);
+      Cookies.set("users_id", response.data.data.recruiter_id);
+      Cookies.set("role", response.data.data.role);
 
       toast.success("login succesfully");
 

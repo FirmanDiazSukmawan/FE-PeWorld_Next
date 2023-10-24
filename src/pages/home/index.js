@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import img from "../../assets/foto2.png";
 import Navbar from "@/component/Navbar/Navbar";
 import Footer from "@/component/Footer/Footer";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton, Pagination } from "react-bootstrap";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -38,9 +38,10 @@ export async function getServerSideProps(context) {
 }
 
 export default function Index({ workers, searchQuery }) {
-  // console.log(searchQuery);
   const [search, setSearch] = useState(searchQuery);
   const [searchResults, setSearchResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const workerPerPage = 4;
   const handleSearch = () => {
     if (search) {
       const filteredResults = workers.data.filter((item) =>
@@ -53,11 +54,29 @@ export default function Index({ workers, searchQuery }) {
   };
   // console.log(searchResults);
 
+  const handleKeydown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSearch();
+    }
+  };
+
   useEffect(() => {
     // Jalankan pencarian saat komponen dimuat pertama kali
     handleSearch();
   }, []);
 
+  const indexOfLastWorkers = currentPage * workerPerPage;
+  const indexOfFirstWorkers = indexOfLastWorkers - workerPerPage;
+  const currentWorkers = searchResults.slice(
+    indexOfFirstWorkers,
+    indexOfLastWorkers
+  );
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  console.log(workers);
   return (
     <>
       <div className="overflow-x-hidden">
@@ -75,7 +94,7 @@ export default function Index({ workers, searchQuery }) {
               Search
             </label>
             <div className="relative w-[100%] flex items-center">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
                 <svg
                   className="w-4 h-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
@@ -97,9 +116,9 @@ export default function Index({ workers, searchQuery }) {
                 id="search"
                 className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search"
-                required=""
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={handleKeydown}
               />
               <Button onClick={handleSearch} className="absolute right-3">
                 Search
@@ -121,9 +140,9 @@ export default function Index({ workers, searchQuery }) {
             </Dropdown>
           </form>
         </div>
-        <div className="flex justify-center items-center py-2">
-          <div className="flex flex-col items-center w-[80vw]">
-            {searchResults?.map((item, index) => (
+        <div className="flex justify-center items-center py-5">
+          <div className="flex flex-col items-center w-[80vw] pb-5">
+            {currentWorkers?.map((item, index) => (
               <div
                 className="card mb-4"
                 style={{ width: "100%", justifyContent: "space-between" }}
@@ -198,6 +217,19 @@ export default function Index({ workers, searchQuery }) {
                 </div>
               </div>
             ))}
+            <Pagination>
+              {Array.from({
+                length: Math.ceil(searchResults.length / workerPerPage),
+              }).map((_, index) => (
+                <Pagination.Item
+                  key={index}
+                  active={index + 1 === currentPage}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </Pagination.Item>
+              ))}
+            </Pagination>
           </div>
         </div>
         <Footer />

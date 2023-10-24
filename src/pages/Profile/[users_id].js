@@ -51,9 +51,9 @@ export default function Index() {
                   </p>
                   <button
                     className="text-center w-[100%] h-9 bg-[#5E50A1] rounded-md text-white text-base font-semibold my-3"
-                    onClick={handleHire}
+                    // onClick={handleHire}
                   >
-                    Hire
+                    Edit Profile
                   </button>
                   <h1 className="text-[#1F2A36] lg:text-2xl md:text-lg text-base font-semibold ">
                     Skill :

@@ -3,31 +3,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url } from "../../baseUrl/url";
 
-export const getWorkers = createAsyncThunk(
-  "worker/getWorkers",
-  async ({ data }) => {
-    try {
-      const response = await axios.post(`${url}/workers`, {
-        nama: data.nama,
-        email: data.email,
-        phone: data.phone,
-        password: data.password,
-        confirmPassword: data.confirmPassword,
-      });
-
-      toast.success("register Successfully");
-
-      return response.data;
-    } catch (error) {
-      //   console.log(error);
-      Swal.fire({
-        titleText: "register Failed",
-        text: error.response.data.message,
-        icon: "error",
-      });
-    }
+export const getWorkers = createAsyncThunk("worker/getWorkers", async () => {
+  try {
+    const response = await axios.get(`${url}/workers`);
+    // console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 export const getWorkersSlice = createSlice({
   name: "getWorkers",

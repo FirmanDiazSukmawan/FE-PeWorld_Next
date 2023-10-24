@@ -13,6 +13,7 @@ import axios from "axios";
 import { url } from "@/redux/baseUrl/url";
 import { useEffect, useState } from "react";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
+import Cookies from "js-cookie";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps() {
@@ -40,7 +41,7 @@ export default function Home(workers) {
   const route = useRouter();
 
   useEffect(() => {
-    const getToken = localStorage.getItem("token");
+    const getToken = Cookies.get("token");
     if (getToken) {
       setLogin(getToken);
     }
@@ -184,7 +185,7 @@ export default function Home(workers) {
           <div
           // onClick={handleProfile}
           >
-            <CardCarousel workers={workers} />
+            {loading ? "loading..." : <CardCarousel workers={workers} />}
           </div>
           {/* ))} */}
         </div>
@@ -194,7 +195,7 @@ export default function Home(workers) {
             <div className="text-[#fff] font-sans lg:text-2xl sm-text-xl text-lg lg:w-[50%] sm:w-[50%] w-[60%] ">
               Lorem ipsum dolor sit amet
             </div>
-            <button className="w-[40%] sm:w-[50%] lg:w-[20%] h-[40%] bg-white text-[#796EAF] lg:text-base sm:text-sm text-xs">
+            <button className="w-[40%] sm:w-[50%] lg:w-[20%] h-[40%] bg-white text-[#796EAF] lg:text-base sm:text-sm text-xs rounded-xl">
               Mulai Dari Sekarang
             </button>
           </div>

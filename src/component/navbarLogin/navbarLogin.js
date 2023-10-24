@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/chatpp.png";
 import image from "../../assets/foto3.png";
 
@@ -14,11 +14,36 @@ import {
   Avatar,
   User,
 } from "@nextui-org/react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getWorkers,
+  getWorkersSelector,
+} from "@/redux/reducer/worker/getWorkerSlice";
+import Cookies from "js-cookie";
+import {
+  getWorkersById,
+  getWorkersByIdSelector,
+} from "@/redux/reducer/worker/getWorkerByIdSlice";
+import {
+  getRecruiterById,
+  getRecruiterByIdSelector,
+} from "@/redux/reducer/recruiter/getRecruitersByIdSlice";
 
 function NavbarLogin() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const worker = useSelector(getWorkersByIdSelector);
+  const recruiter = useSelector(getRecruiterByIdSelector);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  const users_id = Cookies.get("users_id");
+
+  console.log(recruiter);
+
+  useEffect(() => {
+    dispatch(getWorkersById(users_id));
+    dispatch(getRecruiterById(users_id));
+  }, [dispatch, users_id]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -28,18 +53,26 @@ function NavbarLogin() {
     setIsNotificationVisible(!isNotificationVisible);
   };
 
-  const handleProfile = () => {
-    router.push("/Profile");
+  const profileCompany = (recruiter_id) => {
+    router.push(`/profileCompany/${recruiter_id}`);
+  };
+
+  const profile = (worker_id) => {
+    router.push(`/Profile/${worker_id}`);
   };
 
   const logout = () => {
-    localStorage.clear();
+    Cookies.remove("role");
+    Cookies.remove("users_id");
+    Cookies.remove("token");
     router.push("/login");
   };
 
   const chat = () => {
     router.push("/chat");
   };
+
+  const role = Cookies.get("role");
 
   return (
     <header id="navbarHome">
@@ -90,33 +123,77 @@ function NavbarLogin() {
                   style={{ marginRight: 20 }}
                   onClick={chat}
                 ></i>
+                {role === "0" ? (
+                  <div className="flex items-center gap-4">
+                    {recruiter?.data?.map((item, index) => (
+                      <Dropdown placement="bottom-start" key={index}>
+                        <DropdownTrigger>
+                          <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
+                            <Image
+                              src={item.image}
+                              alt="img"
+                              className="w-[100%] h-[100%] rounded-[50%]"
+                              width={36}
+                              height={36}
+                              blurDataURL="blur"
+                            />
+                          </div>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="User Actions" variant="flat">
+                          <DropdownItem
+                            key="profile"
+                            onClick={() => profileCompany(item.recruiter_id)}
+                          >
+                            Profile
+                          </DropdownItem>
 
-                <div className="flex items-center gap-4">
-                  <Dropdown placement="bottom-start">
-                    <DropdownTrigger>
-                      <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
-                        <Image
-                          src={img}
-                          alt="img"
-                          className="w-[100%] h-[100%] rounded-[50%]"
-                        />
-                      </div>
-                    </DropdownTrigger>
-                    <DropdownMenu aria-label="User Actions" variant="flat">
-                      <DropdownItem key="profile" onClick={handleProfile}>
-                        Profile
-                      </DropdownItem>
+                          <DropdownItem
+                            key="logout"
+                            color="danger"
+                            onClick={logout}
+                          >
+                            Log Out
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </Dropdown>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-4">
+                    {worker?.data?.map((item, index) => (
+                      <Dropdown placement="bottom-start" key={index}>
+                        <DropdownTrigger>
+                          <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
+                            <Image
+                              src={item.image}
+                              alt="img"
+                              className="w-[100%] h-[100%] rounded-[50%]"
+                              width={36}
+                              height={36}
+                              blurDataURL="blur"
+                            />
+                          </div>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="User Actions" variant="flat">
+                          <DropdownItem
+                            key="profile"
+                            onClick={() => profile(item.workers_id)}
+                          >
+                            Profile
+                          </DropdownItem>
 
-                      <DropdownItem
-                        key="logout"
-                        color="danger"
-                        onClick={logout}
-                      >
-                        Log Out
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                </div>
+                          <DropdownItem
+                            key="logout"
+                            color="danger"
+                            onClick={logout}
+                          >
+                            Log Out
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </Dropdown>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>

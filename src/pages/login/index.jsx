@@ -10,6 +10,7 @@ import { loginRecruiter, loginWorker } from "@/redux/reducer/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +23,7 @@ export default function Index() {
   const handleLoginWorker = async() => {
     try {
     await dispatch(loginWorker({email,password}))
-     const token = localStorage.getItem("token");
+     const token = Cookies.get("token");
     if (token) {
       router.push("/")
     }
@@ -35,7 +36,7 @@ export default function Index() {
   const handleLoginRecruiter = async() => {
     try {
     await dispatch(loginRecruiter({email,password}))
-     const token = localStorage.getItem("token");
+     const token = Cookies.get("token");
     if (token) {
       router.push("/")
     }
@@ -46,7 +47,7 @@ export default function Index() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
     if (token) {
       router.push("/");
     }

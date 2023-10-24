@@ -8,8 +8,8 @@ export default function CardCarousel(workers) {
   // console.log(workers.workers.workers.data);
   const route = useRouter();
 
-  const handleClick = (users_id) => {
-    route.push("/Profile", { users_id });
+  const handleClick = (workers_id) => {
+    route.push(`profileDetail/${workers_id}`);
   };
 
   // Membagi data kartu menjadi grup yang berisi 3 kartu per grup
@@ -17,6 +17,8 @@ export default function CardCarousel(workers) {
   for (let i = 0; i < workers?.workers?.workers?.data.length; i += 3) {
     cardGroups.push(workers?.workers?.workers?.data.slice(i, i + 3));
   }
+
+  console.log(cardGroups);
 
   return (
     <div
@@ -46,7 +48,7 @@ export default function CardCarousel(workers) {
               >
                 <div
                   className="flex flex-col justify-center items-center"
-                  onClick={() => handleClick(card.users_id)}
+                  onClick={() => handleClick(card.workers_id)}
                 >
                   <div
                     className="w-[130] h-[130] border-4"

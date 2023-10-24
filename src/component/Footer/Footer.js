@@ -2,16 +2,16 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="py-2  dark:text-gray-50 bg-[#5E50A1] w-screen ">
-      <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
-        <div className="pb-6 col-span-full md:pb-0 md:col-span-6 flex flex-col sm:items-center sm:flex-row">
+    <footer className="py-2  dark:text-gray-50 bg-[#5E50A1] w-screen">
+      <div className="container px-2 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 flex flex-col">
+        <div className="pb-6 col-span-full md:pb-0 md:col-span-6 flex flex-col ">
           <a
             rel="noopener noreferrer"
             href="#"
-            className="flex items-center justify-start space-x-3 md:justify-start"
+            className="flex items-center justify-start space-x-3"
             style={{ textDecoration: "none" }}
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400 font-semibold">
+            <div className="flex items-center justify-center h-12 rounded-full dark:bg-violet-400 font-semibold">
               <i
                 className="bi bi-stack px-2"
                 style={{ color: "#fff", fontSize: 20 }}
