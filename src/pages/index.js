@@ -37,6 +37,7 @@ export default function Home(workers) {
   // console.log(workers.workers.data);
   const [loading, setLoading] = useState(false);
   const [login, setLogin] = useState("");
+  const route = useRouter();
 
   useEffect(() => {
     const getToken = localStorage.getItem("token");
@@ -44,6 +45,10 @@ export default function Home(workers) {
       setLogin(getToken);
     }
   }, []);
+
+  const handleClick = () => {
+    route.push("home");
+  };
 
   return (
     <>
@@ -63,7 +68,10 @@ export default function Home(workers) {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 euismod ipsum et dui rhoncus auctor.
               </p>
-              <button className="bg-[#5E50A1] text-[#FFF] lg:text-lg text-xs lg:w-[45%] w-[100%] h-[5vh] rounded">
+              <button
+                className="bg-[#5E50A1] text-[#FFF] lg:text-lg text-xs lg:w-[45%] w-[100%] h-[5vh] rounded"
+                onClick={handleClick}
+              >
                 Mulai Dari Sekarang
               </button>
             </div>

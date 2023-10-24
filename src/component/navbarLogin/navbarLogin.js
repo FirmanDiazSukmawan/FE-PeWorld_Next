@@ -37,6 +37,10 @@ function NavbarLogin() {
     router.push("/login");
   };
 
+  const chat = () => {
+    router.push("/chat");
+  };
+
   return (
     <header id="navbarHome">
       <nav
@@ -81,7 +85,11 @@ function NavbarLogin() {
                 >
                   {isNotificationVisible && <Notifcation />}
                 </i>
-                <i className="bi bi-envelope" style={{ marginRight: 20 }}></i>
+                <i
+                  className="bi bi-envelope"
+                  style={{ marginRight: 20 }}
+                  onClick={chat}
+                ></i>
 
                 <div className="flex items-center gap-4">
                   <Dropdown placement="bottom-start">

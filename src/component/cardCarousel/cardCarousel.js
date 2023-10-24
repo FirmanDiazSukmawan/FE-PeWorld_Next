@@ -2,32 +2,15 @@ import Image from "next/image";
 import React from "react";
 import img from "../../assets/bg1.png";
 import { Carousel } from "react-responsive-carousel";
+import { useRouter } from "next/router";
 
 export default function CardCarousel(workers) {
-  console.log(workers.workers.workers.data);
-  // Data untuk kartu-kartu Anda
-  const cardsData = [
-    {
-      title: "Card 1",
-      text: "Some quick example text for Card 1.",
-    },
-    {
-      title: "Card 2",
-      text: "Some quick example text for Card 2.",
-    },
-    {
-      title: "Card 3",
-      text: "Some quick example text for Card 3.",
-    },
-    {
-      title: "Card 4",
-      text: "Some quick example text for Card 4.",
-    },
-    {
-      title: "Card 5",
-      text: "Some quick example text for Card 5.",
-    },
-  ];
+  // console.log(workers.workers.workers.data);
+  const route = useRouter();
+
+  const handleClick = (users_id) => {
+    route.push("/Profile", { users_id });
+  };
 
   // Membagi data kartu menjadi grup yang berisi 3 kartu per grup
   const cardGroups = [];
@@ -61,7 +44,10 @@ export default function CardCarousel(workers) {
                 }}
                 key={cardIndex}
               >
-                <div className="flex flex-col justify-center items-center">
+                <div
+                  className="flex flex-col justify-center items-center"
+                  onClick={() => handleClick(card.users_id)}
+                >
                   <div
                     className="w-[130] h-[130] border-4"
                     style={{ borderRadius: "50%", borderColor: "#FBB0175E" }}
