@@ -42,18 +42,22 @@ export default function ProfileCompany({ recruiters }) {
                     />
                   </div>
                   <div className="flex flex-col lg:w-[50%] md:w-[70%] w-[75%] justify-center items-center">
-                    <h1 className="text-[#1F2A36] lg:text-xl sm:text-lg text-sm font-semibold">
+                    <span className="text-[#1F2A36] lg:text-xl sm:text-lg text-sm font-semibold">
                       {item.nama}
-                    </h1>
-                    <span className="text-[#1F2A36] lg:text-sm md:text-sm text-xs font-normal">
+                    </span>
+                    <p className="text-[#1F2A36] lg:text-sm md:text-sm text-xs font-normal">
                       {item.jabatan}
+                    </p>
+                    <span className="text-[#1F2A36] lg:text-sm md:text-sm text-xs font-semibold">
+                      {item.perusahaan}
                     </span>
                     <span className="text-[#9EA0A5] lg:text-sm md:text-sm text-xs font-normal">
-                      <i className="bi bi-geo-alt"></i> {item.location}
+                      {item.bidang}
                     </span>
                     <p className="text-[#9EA0A5] lg:text-sm md:text-sm text-xs font-normal">
-                      Freelance
+                      <i className="bi bi-geo-alt"></i> {item.location}
                     </p>
+
                     <p className="text-[#9EA0A5] lg:text-sm md:text-sm text-xs font-normal">
                       {item.description}
                     </p>

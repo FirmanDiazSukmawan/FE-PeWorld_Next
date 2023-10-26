@@ -16,6 +16,10 @@ import createPortofolioSlice from "./reducer/portofolio/createPortofolioSlice";
 import deletePortofolioSlice from "./reducer/portofolio/deletePortofolioSlice";
 import getPortofolioByUsersIdSlice from "./reducer/portofolio/getPortofolioByUsersId";
 import updatePortofolioSlice from "./reducer/portofolio/updatePortofolioSlice";
+import updateRecruiterSlice from "./reducer/recruiter/updateRecruiterSlice";
+import createHireSlice from "./reducer/hire/createHireSlice";
+import getHireByWorkersIdSlice from "./reducer/hire/getHireByWorkersId";
+import getHireByRecruiterIdSlice from "./reducer/hire/getHireByRecruiterId";
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +32,7 @@ export const store = configureStore({
     updateSkillsWorkers: updateSkillsWorkersSlice,
     getRecruiter: getRecruiterSlice,
     getRecruiterById: getRecruiterByIdSlice,
+    updateRecruiter: updateRecruiterSlice,
     getExperienceByUsersId: getExperienceByUsersIdSlice,
     createExperience: createExperienceSlice,
     updateExperience: updateExperienceSlice,
@@ -36,5 +41,8 @@ export const store = configureStore({
     deletePortofolio: deletePortofolioSlice,
     getPortofolioByUsersId: getPortofolioByUsersIdSlice,
     updatePortofolio: updatePortofolioSlice,
+    getHireByWorkersId: getHireByWorkersIdSlice,
+    getHireByRecruiterId: getHireByRecruiterIdSlice,
+    createHire: createHireSlice,
   },
 });

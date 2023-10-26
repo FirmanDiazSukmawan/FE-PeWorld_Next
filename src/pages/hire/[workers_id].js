@@ -6,13 +6,17 @@ import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import { url } from "@/redux/baseUrl/url";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { createHire } from "@/redux/reducer/hire/createHireSlice";
+import { ToastContainer } from "react-toastify";
 
 export async function getServerSideProps(context) {
   try {
     const { params } = context;
-    const { users_id } = params;
+    const { workers_id } = params;
     // console.log(query);
-    const res = await axios.get(`${url}/workers/${users_id}`);
+    const res = await axios.get(`${url}/workers/${workers_id}`);
     const workers = res.data;
 
     // console.log(workers.data);
@@ -29,10 +33,41 @@ export async function getServerSideProps(context) {
 }
 
 export default function Index({ workers }) {
-  // console.log(workers);
+  const route = useRouter();
+  const { workers_id } = route.query;
+  const users_id = Cookies.get("users_id");
+  const dispatch = useDispatch();
+  const [data, setData] = useState({
+    objective: "",
+    fullname: "",
+    email: "",
+    handphone: "",
+    description: "",
+    workers_id: "",
+    recruiter_id: "",
+  });
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleHire = async (e) => {
+    e.preventDefault();
+    try {
+      await dispatch(createHire({ workers_id, users_id, data }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(data);
+
   return (
     <>
       <div className="overflow-x-hidden">
+        <ToastContainer />
         {/* <Navbar /> */}
         <NavbarLogin />
         <div className="relative">
@@ -72,12 +107,7 @@ export default function Index({ workers }) {
                     <p className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
                       {worker?.description}
                     </p>
-                    <button
-                      className="text-center w-[100%] h-9 bg-[#5E50A1] rounded-md text-white text-base font-semibold my-3"
-                      onClick={() => handleHire(worker?.workers_id)}
-                    >
-                      Hire
-                    </button>
+
                     <h1 className="text-[#1F2A36] lg:text-2xl md:text-lg text-base font-semibold ">
                       Skill :
                     </h1>
@@ -126,27 +156,34 @@ export default function Index({ workers }) {
             <div className="flex flex-row lg:w-[75%] md:w-[75%] w-[100%] h-[50%] lg:ml-[3%] md:ml-[3%] ml-[0%] bg-white lg:-mt-32 md:-mt-32 lg:mb-0 md:mb-0 mb-5 pb-5">
               <div className=" border-gray-200 dark:border-gray-700 w-[100%] h-[100%] ">
                 <div className="flex flex-col ">
-                  <h1 className="text-[#1F2A36] xl:text-3xl md:text-xl text-lg font-semibold font-sans pl-[5%] pt-[3%]">
-                    Hubungi Louis Tomlinson
-                  </h1>
-                  <h5 className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold font-sans pl-[5%] px-[3%] mb-[3%]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                    euismod ipsum et dui rhoncus auctor.
-                  </h5>
+                  {workers?.data?.map((item, index) => (
+                    <div key={index} className="flex flex-col">
+                      <h1 className="text-[#1F2A36] xl:text-3xl md:text-xl text-lg font-semibold font-sans pl-[5%] pt-[3%]">
+                        Hubungi {item.nama}
+                      </h1>
+
+                      <h5 className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold font-sans pl-[5%] px-[3%] mb-[3%]">
+                        Rekrut Talent Kompeten disini ayo segera hubungi {""}
+                        {item.nama}
+                      </h5>
+                    </div>
+                  ))}
                   <form className="flex flex-col items-center ">
                     <label
-                      htmlFor="project"
+                      htmlFor="objective"
                       className="block font-medium leading-6 text-[#9EA0A5] w-[90%] text-xs"
                     >
                       Tujuan tentang pesan ini
                     </label>
                     <div className="mt-2 w-[90%] mb-3">
                       <input
-                        id="project"
-                        name="project"
+                        id="objective"
+                        name="objective"
                         type="text"
-                        autoComplete="project"
-                        placeholder="Masukan nama lengkap"
+                        autoComplete="objective"
+                        placeholder="Masukan Tujuan Pesan ini"
+                        value={data.objective}
+                        onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -159,10 +196,12 @@ export default function Index({ workers }) {
                     <div className="mt-2 w-[90%] mb-3">
                       <input
                         id="Name"
-                        name="nama"
+                        name="fullname"
                         type="text"
                         autoComplete="nama"
                         placeholder="Masukan nama lengkap"
+                        value={data.fullname}
+                        onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -178,7 +217,9 @@ export default function Index({ workers }) {
                         name="email"
                         type="text"
                         autoComplete="email"
-                        placeholder="Masukan Email"
+                        placeholder="Masukan Email Anda"
+                        value={data.email}
+                        onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -195,6 +236,8 @@ export default function Index({ workers }) {
                         type="text"
                         autoComplete="handphone"
                         placeholder="Masukan No Handphone"
+                        value={data.handphone}
+                        onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -207,14 +250,19 @@ export default function Index({ workers }) {
                     <div className="mt-2 w-[90%] mb-3">
                       <textarea
                         id="deskripsi"
-                        name="deskripsi"
+                        name="description"
                         type="text"
                         autoComplete="deskripsi"
                         placeholder="Deskripsikan/jelaskan lebih detail"
+                        value={data.description}
+                        onChange={handleChange}
                         className="block w-full h-[144px] pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
-                    <button className="text-center w-[90%] h-9 bg-[#FBB017] rounded-md text-white text-base font-semibold ">
+                    <button
+                      className="text-center w-[90%] h-9 bg-[#FBB017] rounded-md text-white text-base font-semibold "
+                      onClick={handleHire}
+                    >
                       Hire
                     </button>
                   </form>

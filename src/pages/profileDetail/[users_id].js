@@ -183,27 +183,30 @@ export default function Index({ workers, portofolio, experience }) {
                     title="Portofolio"
                     className="custom-tab"
                   >
-                    <div className="flex flex-row flex-wrap ">
+                    <div className="flex flex-row flex-wrap w-[100%] pt-3 bg-white">
                       {portofolio?.data?.map((item, index) => (
                         <div
-                          className="flex flex-col lg:w-[30%] md:w-[30%] w-[30%] mx-4 mt-3 bg-white items-center"
+                          className="flex flex-col lg:w-[25%] md:w-[25%] w-[25%] mx-4 items-center rounded-lg h-[30vh]"
                           key={index}
                         >
                           {item?.image && (
                             <Image
                               src={item.image}
-                              className="w-[100%] rounded-lg"
+                              className="w-[100%] h-[80%] rounded-lg"
                               alt="..."
                               width={219}
                               height={148}
+                              objectFit="cover"
                             />
                           )}
-                          <span className="lg:text-base sm:text-sm text-xs text-[#1F2A36] font-sans font-semibold text-center">
-                            {item.namaaplikasi}
-                          </span>
-                          <span className="text-[#9EA0A5] text-xs font-mono text-center">
-                            {item.typeportofolio}
-                          </span>
+                          <div className="flex flex-col w-full h-[20%]">
+                            <span className="lg:text-base sm:text-sm text-xs text-[#1F2A36] font-sans font-semibold text-center ">
+                              {item.namaaplikasi}
+                            </span>
+                            <span className="text-[#9EA0A5] text-xs font-mono text-center">
+                              {item.typeportofolio}
+                            </span>
+                          </div>
                         </div>
                       ))}
                     </div>
