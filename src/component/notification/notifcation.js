@@ -25,6 +25,8 @@ export default function Notifcation() {
     dispatch(getHireByWorkersId(users_id));
   }, [dispatch, users_id]);
 
+  const role = Cookies.get("role");
+
   return (
     <div
       style={{
@@ -46,8 +48,8 @@ export default function Notifcation() {
         }}
       >
         <div className="flex flex-col w-[100%] h-[100%] px-3 py-1 overflow-y-auto">
-          {recruiter?.data?.length > 0 || workers?.data?.length > 0 ? (
-            // Menampilkan data jika ada pesan
+          {/* {recruiter?.data?.length > 0 || workers?.data?.length > 0 ? (
+            //
             <>
               {recruiter?.data?.map((recruiters, index) => (
                 <div key={index}>
@@ -75,6 +77,48 @@ export default function Notifcation() {
               ))}
             </>
           ) : (
+            <div className="flex flex-col w-[100%] h-[100%] items-center justify-center">
+              <Image src={img} alt="img" className="w-[50%] h=[50%]" />
+              <h2 className="text-[#1F2A36] text-sm font-normal">
+                Belum ada Notifikasi
+              </h2>
+            </div>
+          )} */}
+
+          {role === "0" && recruiter?.data?.length > 0 && (
+            <>
+              {recruiter?.data?.map((recruiters, index) => (
+                <div key={index}>
+                  <span className="text-base font-semibold font-sans">
+                    {recruiters.fullname}
+                  </span>
+                  <div className="flex w-[95%] bg-slate-300 rounded-lg">
+                    <span className="text-sm font-light font-mono">
+                      {recruiters.objective}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+
+          {role === "1" && workers?.data?.length > 0 && (
+            <>
+              {workers?.data?.map((worker, index) => (
+                <div key={index}>
+                  <span className="text-base font-semibold font-sans">
+                    {worker.fullname}
+                  </span>
+                  <div className="flex w-[95%] bg-slate-300 rounded-lg">
+                    <span className="text-sm font-light font-mono">
+                      {worker.objective}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+          {recruiter?.data?.length === 0 && workers?.data?.length === 0 && (
             <div className="flex flex-col w-[100%] h-[100%] items-center justify-center">
               <Image src={img} alt="img" className="w-[50%] h=[50%]" />
               <h2 className="text-[#1F2A36] text-sm font-normal">

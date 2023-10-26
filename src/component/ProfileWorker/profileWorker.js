@@ -41,8 +41,8 @@ export default function ProfileWorker({ workers }) {
 
   const handleDeleteExp = async (experience_id) => {
     const result = await Swal.fire({
-      title: "Delete Product",
-      text: "Are you sure you want to delete this product?",
+      title: "Delete Experience",
+      text: "Are you sure you want to delete this Experience?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Delete",
@@ -61,8 +61,8 @@ export default function ProfileWorker({ workers }) {
 
   const handleDeletePortofolio = async (portofolio_id) => {
     const result = await Swal.fire({
-      title: "Delete Product",
-      text: "Are you sure you want to delete this product?",
+      title: "Delete Portofolio",
+      text: "Are you sure you want to delete this Portofolio?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Delete",
@@ -224,7 +224,7 @@ export default function ProfileWorker({ workers }) {
                     <div className="flex flex-row flex-wrap w-[100%] pt-3 bg-white">
                       {portofolio?.data?.map((item, index) => (
                         <div
-                          className="flex flex-col lg:w-[25%] md:w-[25%] w-[25%] mx-4 items-center rounded-lg h-[30vh]"
+                          className="flex flex-col lg:w-[25%] md:w-[25%] w-[25%] mx-4 items-center rounded-lg h-[30vh] relative"
                           key={index}
                         >
                           {item?.image && (
@@ -232,18 +232,29 @@ export default function ProfileWorker({ workers }) {
                               src={item.image}
                               className="w-[100%] h-[80%] rounded-lg"
                               alt="..."
-                              width={219}
-                              height={148}
-                              objectFit="cover"
+                              width={300}
+                              height={300}
+                              style={{ objectFit: "fill" }}
                             />
                           )}
                           <div className="flex flex-col w-full h-[20%]">
                             <span className="lg:text-base sm:text-sm text-xs text-[#1F2A36] font-sans font-semibold text-center ">
-                              {item.namaaplikasi}
+                              {item?.namaaplikasi}
                             </span>
                             <span className="text-[#9EA0A5] text-xs font-mono text-center">
-                              {item.typeportofolio}
+                              {item?.typeportofolio}
                             </span>
+                          </div>
+                          <div className="flex flex-row absolute right-0">
+                            <ModalUpdatePortofolio portofolio={item} />
+                            <div
+                              className="text-center w-[40px] h-[40px] px-2"
+                              onClick={() =>
+                                handleDeletePortofolio(item.portofolio_id)
+                              }
+                            >
+                              <i className="bi bi-folder-minus text-[100%]"></i>
+                            </div>
                           </div>
                         </div>
                       ))}

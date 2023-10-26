@@ -36,10 +36,10 @@ export default function ModalUpdatePortofolio({ portofolio }) {
 
   useEffect(() => {
     setPorto({
-      namaAplikasi: portofolio.namaaplikasi,
-      linkRepo: portofolio.linkrepo,
-      typePortofolio: portofolio.typeportofolio,
-      image: portofolio.image,
+      namaAplikasi: portofolio?.namaaplikasi,
+      linkRepo: portofolio?.linkrepo,
+      typePortofolio: portofolio?.typeportofolio,
+      image: portofolio?.image,
     });
   }, [portofolio]);
 
@@ -85,8 +85,8 @@ export default function ModalUpdatePortofolio({ portofolio }) {
   return (
     <>
       <ToastContainer />
-      <div className="pl-2 text-center w-[50%] h-[100%]" onClick={onOpen}>
-        <i className="bi bi-pencil-square text-[100%]"></i>
+      <div className="pl-2 text-center w-[40px] h-[40px]" onClick={onOpen}>
+        <i className="bi bi-pencil-square text-[100%] "></i>
       </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>

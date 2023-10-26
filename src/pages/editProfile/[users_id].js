@@ -345,7 +345,7 @@ export default function Index({ workers }) {
                           htmlFor="jobDesk"
                           className="block font-medium leading-6 text-[#9EA0A5] w-[90%] text-xs"
                         >
-                          Masukan Job Desk anda
+                          Type Pekerjaan
                         </label>
                         <div className="mt-2 w-[90%] mb-4">
                           <input
