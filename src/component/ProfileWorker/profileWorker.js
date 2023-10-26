@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/component/Navbar/Navbar";
 import Footer from "@/component/Footer/Footer";
 import img from "../../assets/bg1.png";
@@ -11,38 +11,76 @@ import axios from "axios";
 import { url } from "@/redux/baseUrl/url";
 import { differenceInMonths, format } from "date-fns";
 import ModalUpdateExperience from "@/component/modalUpdateExperience/ModalUpdateExperience";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteExperience } from "@/redux/reducer/experience/deleteExperienceSlice";
+import Swal from "sweetalert2";
+import {
+  getExperienceByUsersId,
+  getExperienceByUsersIdSelector,
+} from "@/redux/reducer/experience/getExperienceByUsersIdSlice";
+import Cookies from "js-cookie";
+import { deletePortofolio } from "@/redux/reducer/portofolio/deletePortofolioSlice";
+import {
+  getPortofolioByUsersId,
+  getPortofolioByUsersIdSelector,
+} from "@/redux/reducer/portofolio/getPortofolioByUsersId";
+import ModalUpdatePortofolio from "../modalUpdatePortofolio/ModalUpdatePortofolio";
 
-export async function getServerSideProps(context) {
-  try {
-    const { params } = context;
-    const { users_id } = params;
-    // console.log(query);
-    const res = await axios.get(`${url}/workers/${users_id}`);
-    const workers = res.data;
-    const porto = await axios.get(`${url}/portofolio/users/${users_id}`);
-    const portofolio = porto.data;
-    const exp = await axios.get(`${url}/experience/users/${users_id}`);
-    const experience = exp.data;
-
-    // console.log(workers.data);
-
-    return {
-      props: { workers, portofolio, experience },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: { workers: [] },
-    };
-  }
-}
-
-export default function Index({ workers, portofolio, experience }) {
+export default function ProfileWorker({ workers }) {
   // console.log(experience);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const users_id = Cookies.get("users_id");
+  const experience = useSelector(getExperienceByUsersIdSelector);
+  const portofolio = useSelector(getPortofolioByUsersIdSelector);
 
-  const handlHire = (workers_id) => {
-    router.push(`/hire/${workers_id}`);
+  useEffect(() => {
+    dispatch(getExperienceByUsersId(users_id));
+    dispatch(getPortofolioByUsersId(users_id));
+  }, [dispatch, users_id]);
+
+  const handleDeleteExp = async (experience_id) => {
+    const result = await Swal.fire({
+      title: "Delete Product",
+      text: "Are you sure you want to delete this product?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#dc3545",
+    });
+    if (result.isConfirmed) {
+      try {
+        await dispatch(deleteExperience(experience_id));
+        dispatch(getExperienceByUsersId(users_id));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleDeletePortofolio = async (portofolio_id) => {
+    const result = await Swal.fire({
+      title: "Delete Product",
+      text: "Are you sure you want to delete this product?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#dc3545",
+    });
+    if (result.isConfirmed) {
+      try {
+        await dispatch(deletePortofolio(portofolio_id));
+        dispatch(getPortofolioByUsersId(users_id));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleEditProfile = (workers_id) => {
+    router.push(`/editProfile/${workers_id}`);
   };
 
   function formatDateToMonthYear(dateString) {
@@ -62,15 +100,15 @@ export default function Index({ workers, portofolio, experience }) {
     };
   });
 
-  console.log(exp);
+//   console.log(exp);
   return (
     <>
       <div className="overflow-x-hidden">
         {/* <Navbar /> */}
         <NavbarLogin />
-        <div className="relative">
+        <div className="relative pb-9">
           <div className="flex w-full lg:h-[25vh] md:h-[25vh] h-[15vh] bg-[#5E50A1] "></div>
-          <div className="flex justify-center lg:flex-row md:flex-row flex-col w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8]">
+          <div className="flex justify-center lg:flex-row md:flex-row flex-col w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8] ">
             {workers?.data?.map((worker, index) => (
               <div
                 className="flex-col lg:w-[25%] md:w-[25%] w-[100%] bg-white mb-5 lg:-mt-32 md:-mt-32 -mt-14"
@@ -115,9 +153,9 @@ export default function Index({ workers, portofolio, experience }) {
                     </p>
                     <button
                       className="text-center w-[100%] h-9 bg-[#5E50A1] rounded-md text-white text-base font-semibold my-3"
-                      onClick={() => handlHire(worker?.workers_id)}
+                      onClick={() => handleEditProfile(worker?.workers_id)}
                     >
-                      Hire
+                      Edit Profile
                     </button>
                     <h1 className="text-[#1F2A36] lg:text-2xl md:text-lg text-base font-semibold ">
                       Skill :
@@ -183,28 +221,41 @@ export default function Index({ workers, portofolio, experience }) {
                     title="Portofolio"
                     className="custom-tab"
                   >
-                    <div className="flex flex-row flex-wrap ">
+                    <div className="flex flex-row flex-wrap w-[100%] pt-3">
                       {portofolio?.data?.map((item, index) => (
                         <div
-                          className="flex flex-col lg:w-[30%] md:w-[30%] w-[30%] mx-4 mt-3 bg-white items-center"
+                          className="flex flex-col lg:w-[25%] md:w-[25%] w-[25%] mx-4   items-center rounded-lg relative"
                           key={index}
                         >
                           {item?.image && (
                             <Image
                               src={item.image}
-                              className="w-[100%] rounded-lg"
+                              className="w-[100%] h-[90%] rounded-lg"
                               alt="..."
                               width={219}
                               height={148}
                             />
                           )}
+                          {/* <div className="flex flex-col w-[100%] h-[10%]"> */}
                           <span className="lg:text-base sm:text-sm text-xs text-[#1F2A36] font-sans font-semibold text-center">
                             {item.namaaplikasi}
                           </span>
                           <span className="text-[#9EA0A5] text-xs font-mono text-center">
                             {item.typeportofolio}
                           </span>
+                          <div className="flex flex-row absolute right-0">
+                            <ModalUpdatePortofolio portofolio={item} />
+                            <div
+                              className="text-center px-2"
+                              onClick={() =>
+                                handleDeletePortofolio(item.portofolio_id)
+                              }
+                            >
+                              <i className="bi bi-folder-minus text-[100%]"></i>
+                            </div>
+                          </div>
                         </div>
+                        // </div>
                       ))}
                     </div>
                   </Tab>
@@ -216,38 +267,52 @@ export default function Index({ workers, portofolio, experience }) {
                     <div className="flex flex-col">
                       {exp?.map((item, index) => (
                         <div
-                          className=" px-3 flex flex-row w-full pt-4"
+                          className=" px-3 flex flex-row w-full pt-4 justify-between items-center"
                           key={index}
                         >
-                          <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] bg-slate-200 rounded-xl">
-                            {item.image && (
-                              <Image
-                                src={item.image}
-                                alt="img"
-                                width={219}
-                                height={148}
-                                className="w-[100%] h-[100%] rounded-xl"
-                              />
-                            )}
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[#1F2A36] lg:text-xl md:text-base text-sm font-semibold">
-                              {item.profesi}
-                            </span>
-                            <span className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold">
-                              {item.company}
-                            </span>
-                            <div className="flex flex-row">
-                              <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-norma pr-3">
-                                {item.datein} - {item.dateout}
-                              </p>
-                              <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-normal">
-                                {item.totalBulan}Bulan
-                              </p>
+                          <div className="flex flex-row w-[80%]">
+                            <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] bg-slate-200 rounded-xl">
+                              {item.image && (
+                                <Image
+                                  src={item.image}
+                                  alt="img"
+                                  width={219}
+                                  height={148}
+                                  className="w-[100%] h-[100%] rounded-xl"
+                                />
+                              )}
                             </div>
-                            <span className="text-[#1F2A36] lg:text-sm text-xs font-normal w-[95%]">
-                              {item.description}
-                            </span>
+                            <div className="flex flex-col ">
+                              <span className="text-[#1F2A36] lg:text-xl md:text-base text-sm font-semibold">
+                                {item.profesi}
+                              </span>
+                              <span className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold">
+                                {item.company}
+                              </span>
+                              <div className="flex flex-row">
+                                <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-norma pr-3">
+                                  {item.datein} - {item.dateout}
+                                </p>
+                                <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-normal">
+                                  {item.totalBulan}Bulan
+                                </p>
+                              </div>
+                              <span className="text-[#1F2A36] lg:text-sm text-xs font-normal w-[95%]">
+                                {item.description}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex flex-row justify-center  lg:w-[10%] md:w-[15%] w-[20%] items-center">
+                            <ModalUpdateExperience experience={item} />
+
+                            <div
+                              className="text-center w-[50%] h-[100%]"
+                              onClick={() =>
+                                handleDeleteExp(item.experience_id)
+                              }
+                            >
+                              <i className="bi bi-folder-minus text-[100%]"></i>
+                            </div>
                           </div>
                         </div>
                       ))}

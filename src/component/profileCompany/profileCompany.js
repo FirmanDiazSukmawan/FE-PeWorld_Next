@@ -8,33 +8,13 @@ import img1 from "../../assets/foto4.png";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import axios from "axios";
 import { url } from "@/redux/baseUrl/url";
+import { useRouter } from "next/router";
 
-export async function getServerSideProps(context) {
-  try {
-    const { params } = context;
-    const { users_id } = params;
-    // console.log(query);
-    const res = await axios.get(`${url}/recruiters/${users_id}`);
-    const recruiters = res.data;
-    // console.log(recruiters.data);
+export default function ProfileCompany({ recruiters }) {
+  const route = useRouter();
 
-    return {
-      props: { recruiters },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: { recruiters: [] },
-    };
-  }
-}
-
-export default function Index({ recruiters }) {
-  console.log(recruiters);
-  const [activeTab, setActiveTab] = useState(false);
-
-  const handleClick = (tab) => {
-    setActiveTab(tab);
+  const handleEdit = (recruiter_id) => {
+    route.push(`/editRecruiter/${recruiter_id}`);
   };
 
   return (
@@ -77,7 +57,10 @@ export default function Index({ recruiters }) {
                     <p className="text-[#9EA0A5] lg:text-sm md:text-sm text-xs font-normal">
                       {item.description}
                     </p>
-                    <button className="text-center w-[30%] h-9 bg-[#5E50A1] rounded-md text-white lg:text-base text-xs md:text-sm font-semibold mt-3">
+                    <button
+                      className="text-center w-[30%] h-9 bg-[#5E50A1] rounded-md text-white lg:text-base text-xs md:text-sm font-semibold mt-3"
+                      onClick={() => handleEdit(item.recruiter_id)}
+                    >
                       Edit Profile
                     </button>
                     <div className="py-4">

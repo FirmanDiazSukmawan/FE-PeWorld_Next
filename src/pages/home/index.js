@@ -150,18 +150,22 @@ export default function Index({ workers, searchQuery }) {
               >
                 <div className="row items-center w-[100%] lg:h-[200px] justify-around">
                   <div className="col-md-3 items-center justify-center">
-                    <Image
-                      src={img}
-                      className="card-img"
-                      alt="..."
-                      style={{
-                        display: "block",
-                        margin: "0 auto",
-                        width: 150,
-                        height: 150,
-                        borderRadius: "50%",
-                      }}
-                    />
+                    {item.image && (
+                      <Image
+                        src={item.image}
+                        className="card-img"
+                        alt="..."
+                        width={150}
+                        height={150}
+                        style={{
+                          display: "block",
+                          margin: "0 auto",
+                          width: 150,
+                          height: 150,
+                          borderRadius: "50%",
+                        }}
+                      />
+                    )}
                   </div>
                   <div className="col-md-8 flex flex-row items-center">
                     <div className="card-body">
@@ -186,7 +190,7 @@ export default function Index({ workers, searchQuery }) {
                       </p>
 
                       <div className="flex flex-row flex-wrap w-[100%]">
-                        {item?.skill?.split(",").map((skill, skillIndex) => (
+                        {item?.skills?.split(",").map((skill, skillIndex) => (
                           <div
                             className="border-[#FBB017] mr-2 lg:w-[10%] md:w-[30%] w-[40%] items-center justify-center text-center flex h-[25px] rounded-md mb-2"
                             style={{

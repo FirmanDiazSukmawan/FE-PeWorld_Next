@@ -38,13 +38,13 @@ export default function Index(initialData) {
     });
   };
 
-  console.log(data);
+  // console.log(data);
 
   const handleRegWorker = async (e) => {
     e.preventDefault(e);
     try {
       const response = await dispatch(createWorker({ data }));
-      console.log(response);
+      // console.log(response);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -55,7 +55,7 @@ export default function Index(initialData) {
     e.preventDefault(e);
     try {
       const response = await dispatch(createRecruiter({ data }));
-      console.log(response);
+      // console.log(response);
       return response.data;
     } catch (err) {
       console.log(err);

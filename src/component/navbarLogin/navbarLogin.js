@@ -38,7 +38,7 @@ function NavbarLogin() {
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const users_id = Cookies.get("users_id");
 
-  console.log(recruiter);
+  // console.log(recruiter);
 
   useEffect(() => {
     dispatch(getWorkersById(users_id));
@@ -54,11 +54,11 @@ function NavbarLogin() {
   };
 
   const profileCompany = (recruiter_id) => {
-    router.push(`/profileCompany/${recruiter_id}`);
+    router.push(`/profile/${recruiter_id}`);
   };
 
   const profile = (worker_id) => {
-    router.push(`/Profile/${worker_id}`);
+    router.push(`/profile/${worker_id}`);
   };
 
   const logout = () => {
@@ -129,14 +129,15 @@ function NavbarLogin() {
                       <Dropdown placement="bottom-start" key={index}>
                         <DropdownTrigger>
                           <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
-                            <Image
-                              src={item.image}
-                              alt="img"
-                              className="w-[100%] h-[100%] rounded-[50%]"
-                              width={36}
-                              height={36}
-                              blurDataURL="blur"
-                            />
+                            {item.image && (
+                              <Image
+                                src={item.image}
+                                alt="img"
+                                className="w-[100%] h-[100%] rounded-[50%]"
+                                width={36}
+                                height={36}
+                              />
+                            )}
                           </div>
                         </DropdownTrigger>
                         <DropdownMenu aria-label="User Actions" variant="flat">
@@ -164,14 +165,15 @@ function NavbarLogin() {
                       <Dropdown placement="bottom-start" key={index}>
                         <DropdownTrigger>
                           <div className=" flex lg:w-[36px] md:w-[30px] w-[25px] lg:h-[32px] md:h-[26px] h-[21px] bg-[#C4C4C4] rounded-[50%] items-center justify-center">
-                            <Image
-                              src={item.image}
-                              alt="img"
-                              className="w-[100%] h-[100%] rounded-[50%]"
-                              width={36}
-                              height={36}
-                              blurDataURL="blur"
-                            />
+                            {item.image && (
+                              <Image
+                                src={item.image}
+                                alt="img"
+                                className="w-[100%] h-[100%] rounded-[50%]"
+                                width={36}
+                                height={36}
+                              />
+                            )}
                           </div>
                         </DropdownTrigger>
                         <DropdownMenu aria-label="User Actions" variant="flat">

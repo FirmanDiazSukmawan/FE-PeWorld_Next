@@ -4,6 +4,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+@import "react-toastify/dist/ReactToastify.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;

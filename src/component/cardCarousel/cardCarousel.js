@@ -18,7 +18,7 @@ export default function CardCarousel(workers) {
     cardGroups.push(workers?.workers?.workers?.data.slice(i, i + 3));
   }
 
-  console.log(cardGroups);
+  // console.log(cardGroups);
 
   return (
     <div
@@ -52,7 +52,12 @@ export default function CardCarousel(workers) {
                 >
                   <div
                     className="w-[130] h-[130] border-4"
-                    style={{ borderRadius: "50%", borderColor: "#FBB0175E" }}
+                    style={{
+                      borderRadius: "50%",
+                      borderColor: "#FBB0175E",
+                      width: 120,
+                      height: 120,
+                    }}
                   >
                     {card.image && (
                       <Image
@@ -62,7 +67,7 @@ export default function CardCarousel(workers) {
                         width={120}
                         height={120}
                         style={{ borderRadius: "50%", width: 120, height: 120 }}
-                        blurDataURL="blur"
+                        
                       />
                     )}
                   </div>

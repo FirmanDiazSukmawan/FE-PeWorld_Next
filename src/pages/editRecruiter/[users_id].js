@@ -6,8 +6,30 @@ import Image from "next/image";
 import { Tab, TabContainer, Tabs } from "react-bootstrap";
 import img1 from "../../assets/foto4.png";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
+import axios from "axios";
+import { url } from "@/redux/baseUrl/url";
 
-export default function Index() {
+export async function getServerSideProps(context) {
+  try {
+    const { params } = context;
+    const { users_id } = params;
+
+    const res = await axios.get(`${url}/recruiters/${users_id}`);
+    const recruiters = res.data;
+    // console.log(recruiters);
+
+    return {
+      props: { recruiters },
+    };
+  } catch (err) {
+    return {
+      props: { recruiters: [] },
+    };
+  }
+}
+
+export default function Index({ recruiters }) {
+  // console.log(recruiters);
   const [activeTab, setActiveTab] = useState(false);
 
   const handleClick = (tab) => {
@@ -19,47 +41,54 @@ export default function Index() {
       <div className="overflow-x-hidden">
         {/* <Navbar /> */}
         <NavbarLogin />
-        <div className="relative ">
+        <div className="relative h-screen">
           <div className="flex w-full lg:h-[25vh] md:h-[25vh] h-[15vh] bg-[#5E50A1] "></div>
-          <div className="flex justify-center flex-row w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8] ">
-            <div className="flex-col w-[25%] h-[100vh] bg-white lg:-mt-32 md:-mt-32 -mt-14">
-              <div className="flex flex-col w-full items-center">
-                <div className="flex  lg:w-[150px] md:w-[100px] w-[50px] lg:h-[150px] md:h-[100px] h-[50px] rounded-[50%] my-4">
-                  <Image
-                    src={img}
-                    alt="img"
-                    className="rounded-[50%] lg:[100%] lg:h-[100%]"
-                  />
-                </div>
-                <div className="flex flex-col w-[90%]">
-                  <h1 className="text-[#1F2A36] lg:text-xl sm:text-base text-sm font-semibold">
-                    Louis Tomlinson
-                  </h1>
-                  <span className="text-[#1F2A36] lg:text-sm text-xs font-normal">
-                    Web developer
-                  </span>
-                  <span className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
-                    <i className="bi bi-geo-alt"></i> Purwokerto, Jawa Tengah
-                  </span>
-                  <p className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
-                    Freelance
-                  </p>
-                  <p className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                  </p>
-                  <button className="text-center w-[100%] h-9 bg-[#5E50A1] rounded-md text-white text-base font-semibold mt-3">
-                    Simpan
-                  </button>
-                  <button className="text-center w-[100%] h-9 bg-[#F6F7F8] rounded-md text-[#5E50A1] text-base font-semibold my-3">
-                    Batal
-                  </button>
+          <div className="flex justify-center lg:flex-row md:flex-row flex-col w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8]">
+            {recruiters?.data?.map((recruiter, index) => (
+              <div
+                className="flex-col lg:w-[25%] md:w-[25%] w-[100%] bg-white mb-5 lg:-mt-32 md:-mt-32 -mt-14"
+                key={index}
+              >
+                <div className="flex flex-col w-full items-center">
+                  <div className="flex  lg:w-[150px] md:w-[120px] w-[100px] lg:h-[150px] md:h-[120px] h-[100px] rounded-[50%] my-4 bg-gray-500">
+                    <Image
+                      src={recruiter.image}
+                      alt="img"
+                      className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                      width={150}
+                      height={150}
+                    />
+                  </div>
+                  <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[100%] flex-wrap">
+                    <span className="text-[#1F2A36] lg:text-xl sm:text-base text-sm font-semibold">
+                      {recruiter?.nama}
+                    </span>
+                    <span className="text-[#1F2A36] lg:text-sm text-xs font-normal">
+                      {recruiter?.jabatan}
+                    </span>
+                    <span className="text-[#9EA0A5] lg:text-sm text-xs font-normal py-2">
+                      <i className="bi bi-geo-alt lg:text-sm text-xs font-normal"></i>{" "}
+                      {recruiter?.location}
+                    </span>
+                    <p className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
+                      {recruiter?.perusahaan}
+                    </p>
+                    <p className="text-[#9EA0A5] lg:text-sm text-xs font-normal">
+                      {recruiter?.description}
+                    </p>
+
+                    <button className="text-center w-[100%] h-9 bg-[#5E50A1] rounded-md text-white text-base font-semibold my-3">
+                      Simpan
+                    </button>
+                    <button className="text-center w-[100%] h-9 bg-[#F6F7F8] rounded-md text-[#5E50A1] text-base font-semibold my-2 border-2">
+                      Batal
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
 
-            <div className="flex flex-col w-[75%] h-[50%] ml-[3%] lg:-mt-32 md:-mt-32 -mt-14  mb-5">
+            <div className="flex flex-col lg:w-[75%] md:w-[75%] w-[100%] h-[50%] lg:ml-[3%] md:ml-[3%] ml-[0] lg:-mt-32 md:-mt-32 -mt-14  mb-5">
               <div className=" border-gray-200 dark:border-gray-700 w-[100%] h-[100%] bg-white">
                 <div className="flex flex-col">
                   <h1 className="text-[#1F2A36] text-xl font-semibold font-sans pl-[5%] pt-[3%]">

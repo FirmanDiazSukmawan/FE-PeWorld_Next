@@ -5,6 +5,7 @@ import Image from "next/image";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import { url } from "@/redux/baseUrl/url";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   try {
@@ -28,7 +29,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Index({ workers }) {
-  console.log(workers);
+  // console.log(workers);
   return (
     <>
       <div className="overflow-x-hidden">
@@ -44,14 +45,15 @@ export default function Index({ workers }) {
               >
                 <div className="flex flex-col w-full items-center">
                   <div className="flex  lg:w-[150px] md:w-[120px] w-[100px] lg:h-[150px] md:h-[120px] h-[100px] rounded-[50%] my-4 bg-gray-500">
-                    <Image
-                      src={worker.image}
-                      alt="img"
-                      className="rounded-[50%] lg:[100%] lg:h-[100%]"
-                      width={150}
-                      height={150}
-                      blurDataURL="blur"
-                    />
+                    {worker.image && (
+                      <Image
+                        src={worker.image}
+                        alt="img"
+                        className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                        width={150}
+                        height={150}
+                      />
+                    )}
                   </div>
                   <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[90%] flex-wrap">
                     <span className="text-[#1F2A36] lg:text-xl sm:text-base text-sm font-semibold">
@@ -80,8 +82,8 @@ export default function Index({ workers }) {
                       Skill :
                     </h1>
                     <div className="flex flex-row flex-wrap w-[100%]">
-                      {worker?.skill ? (
-                        worker.skill.split(",").map((skill, index) => (
+                      {worker?.skills ? (
+                        worker?.skills?.split(",").map((skill, index) => (
                           <div
                             className="border-[#FBB017] mr-2 lg:w-[30%] md:w-[44%] w-[45%] items-center justify-center text-center flex h-[25px] rounded-md mb-2"
                             style={{
