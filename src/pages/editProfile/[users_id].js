@@ -70,7 +70,7 @@ export default function Index({ workers }) {
     dateOut: "",
     description: "",
     profesi: "",
-    users_id: "",
+    workers_id: users_id,
   });
 
   const [portofolio, setPortofolio] = useState({
@@ -84,17 +84,17 @@ export default function Index({ workers }) {
   useEffect(() => {
     // setLoading(workers.length === 0);
     setData({
-      nama: worker.nama,
-      image: worker.image,
-      profesi: worker.profesi,
-      location: worker.location,
-      company: worker.company,
-      instagram: worker.instagram,
-      github: worker.github,
-      gitlab: worker.gitlab,
-      description: worker.description,
+      nama: worker?.nama,
+      image: worker?.image,
+      profesi: worker?.profesi,
+      location: worker?.location,
+      company: worker?.company,
+      instagram: worker?.instagram,
+      github: worker?.github,
+      gitlab: worker?.gitlab,
+      description: worker?.description,
     });
-    setSkills(worker.skills);
+    setSkills(worker?.skills);
   }, [worker, workers.length]);
 
   const handleChange = (e) => {
@@ -200,7 +200,7 @@ export default function Index({ workers }) {
     }
   };
 
-  // console.log(portofolio);
+  console.log(workers);
 
   return (
     <>
@@ -240,16 +240,16 @@ export default function Index({ workers }) {
                             width={150}
                             height={150}
                           />
+                        ) : worker.image ? (
+                          <Image
+                            src={worker?.image}
+                            alt="img"
+                            className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                            width={150}
+                            height={150}
+                          />
                         ) : (
-                          worker.image && (
-                            <Image
-                              src={worker.image}
-                              alt="img"
-                              className="rounded-[50%] lg:[100%] lg:h-[100%]"
-                              width={150}
-                              height={150}
-                            />
-                          )
+                          <div> No Image</div>
                         )}
                       </div>
                       <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[100%] flex-wrap">

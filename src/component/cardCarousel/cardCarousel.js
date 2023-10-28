@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import img from "../../assets/bg1.png";
 import { Carousel } from "react-responsive-carousel";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 export default function CardCarousel(workers) {
   // console.log(workers.workers.workers.data);
   const route = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const handleClick = (workers_id) => {
     route.push(`profileDetail/${workers_id}`);
@@ -14,8 +15,8 @@ export default function CardCarousel(workers) {
 
   // Membagi data kartu menjadi grup yang berisi 3 kartu per grup
   const cardGroups = [];
-  for (let i = 0; i < workers?.workers?.workers?.data.length; i += 3) {
-    cardGroups.push(workers?.workers?.workers?.data.slice(i, i + 3));
+  for (let i = 0; i < workers?.workers?.workers?.data?.length; i += 3) {
+    cardGroups.push(workers?.workers?.workers?.data?.slice(i, i + 3));
   }
 
   // console.log(cardGroups);
@@ -35,61 +36,73 @@ export default function CardCarousel(workers) {
       >
         {cardGroups.map((group, groupIndex) => (
           <div className="flex flex-row justify-center" key={groupIndex}>
-            {group.map((card, cardIndex) => (
-              <div
-                className="card justify-center items-center mx-3"
-                style={{
-                  width: "339px",
-                  height: "437px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                key={cardIndex}
-              >
-                <div
-                  className="flex flex-col justify-center items-center"
-                  onClick={() => handleClick(card.workers_id)}
-                >
+            {loading
+              ? "loading..."
+              : group.map((card, cardIndex) => (
                   <div
-                    className="w-[130] h-[130] border-4"
+                    className="card justify-center items-center mx-3"
                     style={{
-                      borderRadius: "50%",
-                      borderColor: "#FBB0175E",
-                      width: 120,
-                      height: 120,
-                    }}
-                  >
-                    {card.image && (
-                      <Image
-                        className="card-img-top"
-                        src={card.image}
-                        alt="Card image cap"
-                        width={120}
-                        height={120}
-                        style={{ borderRadius: "50%", width: 120, height: 120 }}
-                        
-                      />
-                    )}
-                  </div>
-                  <div
-                    className="card-body"
-                    style={{
-                      width: "75%",
+                      width: "339px",
+                      height: "437px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
+                    key={cardIndex}
                   >
-                    <h5 className="card-title" style={{ textAlign: "center" }}>
-                      {card.nama}
-                    </h5>
-                    <p className="card-text" style={{ textAlign: "center" }}>
-                      {card.profesi}
-                    </p>
-                    <p> {card.description}</p>
+                    <div
+                      className="flex flex-col justify-center items-center overflow-y-auto h-full"
+                      onClick={() => handleClick(card.workers_id)}
+                    >
+                      <div
+                        className="w-[130] h-[130] border-4"
+                        style={{
+                          borderRadius: "50%",
+                          borderColor: "#FBB0175E",
+                          width: 120,
+                          height: 120,
+                        }}
+                      >
+                        {card.image && (
+                          <Image
+                            className="card-img-top"
+                            src={card.image}
+                            alt="Card image cap"
+                            width={120}
+                            height={120}
+                            style={{
+                              borderRadius: "50%",
+                              width: 120,
+                              height: 120,
+                            }}
+                          />
+                        )}
+                      </div>
+                      <div
+                        className="card-body"
+                        style={{
+                          width: "75%",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          overflowY: "auto",
+                        }}
+                      >
+                        <h5
+                          className="card-title"
+                          style={{ textAlign: "center" }}
+                        >
+                          {card.nama}
+                        </h5>
+                        <p
+                          className="card-text"
+                          style={{ textAlign: "center" }}
+                        >
+                          {card.profesi}
+                        </p>
+                        <p> {card.description}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
           </div>
         ))}
       </Carousel>
