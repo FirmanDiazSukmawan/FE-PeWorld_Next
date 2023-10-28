@@ -11,6 +11,7 @@ import axios from "axios";
 import { url } from "@/redux/baseUrl/url";
 import { differenceInMonths, format } from "date-fns";
 import ModalUpdateExperience from "@/component/modalUpdateExperience/ModalUpdateExperience";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   try {
@@ -66,6 +67,9 @@ export default function Index({ workers, portofolio, experience }) {
   return (
     <>
       <div className="overflow-x-hidden">
+        <Head>
+          <title>PeWorld</title>
+        </Head>
         {/* <Navbar /> */}
         <NavbarLogin />
         <div className="relative">

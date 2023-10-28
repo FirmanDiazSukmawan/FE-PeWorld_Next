@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import Head from "next/head";
 
 export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +26,10 @@ export default function Index() {
     await dispatch(loginWorker({email,password}))
      const token = Cookies.get("token");
     if (token) {
-      router.push("/")
+      setTimeout(() => {
+        router.push("/")
+      }, 3000);
+      
     }
     }
     catch (error) {
@@ -38,7 +42,10 @@ export default function Index() {
     await dispatch(loginRecruiter({email,password}))
      const token = Cookies.get("token");
     if (token) {
-      router.push("/")
+      setTimeout(() => {
+        router.push("/")
+      }, 3000);
+      
     }
     }
     catch (error) {
@@ -56,7 +63,9 @@ export default function Index() {
 
   return (
     <>
-    
+    <Head>
+          <title>PeWorld</title>
+        </Head>
       <main>
       <ToastContainer/>
         <div className="flex bg-[#F6F7F8] ">

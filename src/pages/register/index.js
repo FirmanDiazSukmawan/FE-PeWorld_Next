@@ -6,6 +6,9 @@ import { Tab, Tabs } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createWorker } from "@/redux/reducer/worker/createWorkerSlice";
 import { createRecruiter } from "@/redux/reducer/recruiter/createRecruiterSlice";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { ToastContainer } from "react-toastify";
 
 export async function getServerSideProps() {
   const initialData = {
@@ -29,6 +32,7 @@ export default function Index(initialData) {
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState(initialData);
   const dispatch = useDispatch();
+  const route = useRouter();
 
   const handleChange = (e) => {
     e.preventDefault(e);
@@ -45,6 +49,7 @@ export default function Index(initialData) {
     try {
       const response = await dispatch(createWorker({ data }));
       // console.log(response);
+
       return response.data;
     } catch (err) {
       console.log(err);
@@ -65,7 +70,11 @@ export default function Index(initialData) {
   return (
     <>
       <main>
+        <Head>
+          <title>PeWorld</title>
+        </Head>
         <div className="flex bg-[#F6F7F8]">
+          <ToastContainer />
           <div className="hidden lg:flex md:hidden  h-[100vh] w-[50vw] items-center justify-center px-5 ">
             <div className="h-[90%] w-[100%] relative ">
               <div className=" bg-[#5E50A1] w-[100%] h-[100%]  absolute opacity-60 " />

@@ -3,7 +3,7 @@ import Navbar from "@/component/Navbar/Navbar";
 import Footer from "@/component/Footer/Footer";
 import img from "../../assets/bg1.png";
 import Image from "next/image";
-import { Tab, TabContainer, Tabs, ToastContainer } from "react-bootstrap";
+import { Tab, TabContainer, Tabs } from "react-bootstrap";
 import img1 from "../../assets/foto4.png";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import axios from "axios";
@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { updateRecruiter } from "@/redux/reducer/recruiter/updateRecruiterSlice";
+import Head from "next/head";
+import { ToastContainer } from "react-toastify";
 
 export async function getServerSideProps(context) {
   try {
@@ -101,11 +103,15 @@ export default function Index({ recruiters }) {
 
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <div className="overflow-x-hidden">
+        <ToastContainer />
         {/* <Navbar /> */}
         <NavbarLogin />
         <div className="relative h-screen">
-          <ToastContainer />
+          {/* <ToastContainer /> */}
           <div className="flex w-full lg:h-[25vh] md:h-[25vh] h-[15vh] bg-[#5E50A1] "></div>
           <div className="flex justify-center lg:flex-row md:flex-row flex-col w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8]">
             {recruiters?.data?.map((recruiter, index) => (
@@ -130,16 +136,16 @@ export default function Index({ recruiters }) {
                         width={150}
                         height={150}
                       />
+                    ) : recruiter?.image ? (
+                      <Image
+                        src={recruiter?.image}
+                        alt="img"
+                        className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                        width={150}
+                        height={150}
+                      />
                     ) : (
-                      recruiter.image && (
-                        <Image
-                          src={recruiter.image}
-                          alt="img"
-                          className="rounded-[50%] lg:[100%] lg:h-[100%]"
-                          width={150}
-                          height={150}
-                        />
-                      )
+                      <div>No Image</div>
                     )}
                   </div>
                   <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[100%] flex-wrap">

@@ -77,6 +77,7 @@ export default function ModalUpdateExperience({ experience }) {
           image,
         })
       );
+      onClose();
     } catch (e) {
       console.log(e);
     }

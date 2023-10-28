@@ -7,6 +7,7 @@ import { Tab, TabContainer, Tabs } from "react-bootstrap";
 import img1 from "../../assets/bgicon.png";
 import chatpp from "../../assets/chatpp.png";
 import NavbarLogin from "@/component/navbarLogin/navbarLogin";
+import Head from "next/head";
 
 export default function Index() {
   const [activeTab, setActiveTab] = useState(false);
@@ -17,6 +18,9 @@ export default function Index() {
 
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <div>
         {/* <Navbar /> */}
         <NavbarLogin />

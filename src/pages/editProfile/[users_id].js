@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { updateSkillsWorkers } from "@/redux/reducer/worker/updateWorkerSkillSlice";
 import { createExperience } from "@/redux/reducer/experience/createExperienceSlice";
 import { createPortofolio } from "@/redux/reducer/portofolio/createPortofolioSlice";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   try {
@@ -203,6 +204,9 @@ export default function Index({ workers }) {
 
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <ToastContainer />
       <div className="overflow-x-hidden">
         {loading ? (

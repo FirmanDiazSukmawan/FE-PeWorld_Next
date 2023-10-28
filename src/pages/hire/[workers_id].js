@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { createHire } from "@/redux/reducer/hire/createHireSlice";
 import { ToastContainer } from "react-toastify";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   try {
@@ -66,6 +67,9 @@ export default function Index({ workers }) {
 
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <div className="overflow-x-hidden">
         <ToastContainer />
         {/* <Navbar /> */}

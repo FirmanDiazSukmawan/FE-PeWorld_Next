@@ -33,13 +33,17 @@ export default function ProfileCompany({ recruiters }) {
                   key={index}
                 >
                   <div className="flex  lg:w-[150px] md:w-[120px] w-[100px] lg:h-[150px] md:h-[120px] h-[100px] rounded-[50%] my-4 ">
-                    <Image
-                      src={item.image}
-                      alt="img"
-                      className="rounded-[50%] lg:[100%] lg:h-[100%]"
-                      width={150}
-                      height={150}
-                    />
+                    {item?.image ? (
+                      <Image
+                        src={item?.image}
+                        alt="img"
+                        className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                        width={150}
+                        height={150}
+                      />
+                    ) : (
+                      <div> no image</div>
+                    )}
                   </div>
                   <div className="flex flex-col lg:w-[50%] md:w-[70%] w-[75%] justify-center items-center">
                     <span className="text-[#1F2A36] lg:text-xl sm:text-lg text-sm font-semibold">

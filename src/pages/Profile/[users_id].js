@@ -16,6 +16,7 @@ import { deleteExperience } from "@/redux/reducer/experience/deleteExperienceSli
 import ProfileWorker from "@/component/ProfileWorker/profileWorker";
 import Cookies from "js-cookie";
 import ProfileCompany from "@/component/profileCompany/profileCompany";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   try {
@@ -48,6 +49,9 @@ export default function Index({ workers, portofolio, experience, recruiters }) {
   const role = Cookies.get("role");
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <div className="overflow-x-hidden">
         {role === "0" ? (
           <ProfileCompany recruiters={recruiters} />

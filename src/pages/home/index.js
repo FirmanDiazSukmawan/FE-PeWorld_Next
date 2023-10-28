@@ -16,6 +16,7 @@ import { Button } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import noData from "../../../public/noData";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   try {
@@ -120,6 +121,9 @@ export default function Index({ workers, searchQuery }) {
   };
   return (
     <>
+      <Head>
+        <title>PeWorld</title>
+      </Head>
       <div className="overflow-x-hidden">
         {/* <Navbar /> */}
         <NavbarLogin />
@@ -291,10 +295,10 @@ export default function Index({ workers, searchQuery }) {
                 src={noData}
                 style={{ height: "50vh", width: "50vw" }}
               >
-                <Controls
+                {/* <Controls
                   visible={true}
                   buttons={["play", "repeat", "frame", "debug"]}
-                />
+                /> */}
               </Player>
             )}
             <Pagination>

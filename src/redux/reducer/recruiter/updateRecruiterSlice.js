@@ -26,11 +26,11 @@ export const updateRecruiter = createAsyncThunk(
       );
 
       toast.success("update Profile Succes");
-      console.log(formData);
+      // console.log(formData);
 
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 5000);
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
 
       return response.data;
     } catch (error) {

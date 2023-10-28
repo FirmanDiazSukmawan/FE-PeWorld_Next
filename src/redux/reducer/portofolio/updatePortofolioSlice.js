@@ -21,9 +21,9 @@ export const updatePortofolio = createAsyncThunk(
 
       toast.success("update Portofolio Succesfully");
 
-      //   setTimeout(() => {
-      //     window.location.reload();
-      //   }, 4000);
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
 
       return response.data;
     } catch (error) {
