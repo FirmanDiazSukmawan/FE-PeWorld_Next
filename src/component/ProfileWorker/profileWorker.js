@@ -120,7 +120,7 @@ export default function ProfileWorker({ workers }) {
                       <Image
                         src={worker.image}
                         alt="img"
-                        className="rounded-[50%] lg:[100%] lg:h-[100%]"
+                        className="rounded-[50%] lg:w-[100%] lg:h-[100%]"
                         width={150}
                         height={150}
                       />
@@ -234,7 +234,6 @@ export default function ProfileWorker({ workers }) {
                               alt="..."
                               width={300}
                               height={300}
-                              style={{ objectFit: "fill" }}
                             />
                           )}
                           <div className="flex flex-col w-full h-[20%]">
@@ -271,8 +270,8 @@ export default function ProfileWorker({ workers }) {
                           className=" px-3 flex flex-row w-full pt-4 justify-between items-center"
                           key={index}
                         >
-                          <div className="flex flex-row w-[80%]">
-                            <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] bg-slate-200 rounded-xl">
+                          <div className="flex flex-row w-[80%] items-center h-[20vh]">
+                            <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] h-[100%] bg-slate-200 rounded-xl">
                               {item.image && (
                                 <Image
                                   src={item.image}
@@ -283,7 +282,7 @@ export default function ProfileWorker({ workers }) {
                                 />
                               )}
                             </div>
-                            <div className="flex flex-col ">
+                            <div className="flex flex-col w-[80%] overflow-y-auto h-[100%] ">
                               <span className="text-[#1F2A36] lg:text-xl md:text-base text-sm font-semibold">
                                 {item.profesi}
                               </span>

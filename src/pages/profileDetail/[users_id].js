@@ -223,38 +223,40 @@ export default function Index({ workers, portofolio, experience }) {
                     <div className="flex flex-col">
                       {exp?.map((item, index) => (
                         <div
-                          className=" px-3 flex flex-row w-full pt-4"
+                          className=" px-3 flex flex-row w-full pt-4 justify-between items-center"
                           key={index}
                         >
-                          <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] bg-slate-200 rounded-xl">
-                            {item.image && (
-                              <Image
-                                src={item.image}
-                                alt="img"
-                                width={219}
-                                height={148}
-                                className="w-[100%] h-[100%] rounded-xl"
-                              />
-                            )}
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[#1F2A36] lg:text-xl md:text-base text-sm font-semibold">
-                              {item.profesi}
-                            </span>
-                            <span className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold">
-                              {item.company}
-                            </span>
-                            <div className="flex flex-row">
-                              <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-norma pr-3">
-                                {item.datein} - {item.dateout}
-                              </p>
-                              <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-normal">
-                                {item.totalBulan}Bulan
-                              </p>
+                          <div className="flex flex-row w-[100%] items-center h-[20vh]">
+                            <div className="mx-3 lg:w-[8vw] md:w-[20vw] w-[30vw] h-[100%] bg-slate-200 rounded-xl">
+                              {item.image && (
+                                <Image
+                                  src={item.image}
+                                  alt="img"
+                                  width={219}
+                                  height={148}
+                                  className="w-[100%] h-[100%] rounded-xl"
+                                />
+                              )}
                             </div>
-                            <span className="text-[#1F2A36] lg:text-sm text-xs font-normal w-[95%]">
-                              {item.description}
-                            </span>
+                            <div className="flex flex-col w-[80%] overflow-y-auto h-[100%] ">
+                              <span className="text-[#1F2A36] lg:text-xl md:text-base text-sm font-semibold">
+                                {item.profesi}
+                              </span>
+                              <span className="text-[#46505C] lg:text-lg md:text-base text-xs font-semibold">
+                                {item.company}
+                              </span>
+                              <div className="flex flex-row">
+                                <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-norma pr-3">
+                                  {item.datein} - {item.dateout}
+                                </p>
+                                <p className="text-[#9EA0A5] lg:text-base md:text-sm text-xs font-normal">
+                                  {item.totalBulan}Bulan
+                                </p>
+                              </div>
+                              <span className="text-[#1F2A36] lg:text-sm text-xs font-normal w-[95%]">
+                                {item.description}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       ))}

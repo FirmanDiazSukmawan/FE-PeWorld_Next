@@ -258,7 +258,7 @@ export default function Index({ workers, searchQuery }) {
                         <div className="flex flex-row flex-wrap w-[100%]">
                           {item?.skills?.split(",").map((skill, skillIndex) => (
                             <div
-                              className="border-[#FBB017] mr-2 lg:w-[10%] md:w-[30%] w-[40%] items-center justify-center text-center flex h-[25px] rounded-md mb-2"
+                              className="border-[#FBB017] mr-2 lg:w-[15%] md:w-[30%] w-[40%] items-center justify-center text-center flex h-[25px] rounded-md mb-2"
                               style={{
                                 backgroundColor: "rgba(251, 176, 23, 0.8)",
                               }}

@@ -66,12 +66,14 @@ export default function Index({ workers }) {
 
   const [experience, setExperience] = useState({
     company: "",
-    dateIn: "",
-    dateOut: "",
+    datein: "",
+    dateout: "",
     description: "",
     profesi: "",
     workers_id: users_id,
   });
+
+  // console.log(experience);
 
   const [portofolio, setPortofolio] = useState({
     namaAplikasi: "",
@@ -521,40 +523,40 @@ export default function Index({ workers }) {
                           </div>
                           <div className="flex flex-col w-[45%] ml-[5%]">
                             <label
-                              htmlFor="dateIn"
+                              htmlFor="datein"
                               className="block font-medium leading-6 text-[#9EA0A5] w-[90%] text-xs"
                             >
                               Tahun Masuk
                             </label>
                             <div className="mt-2 w-[90%] mb-4">
                               <input
-                                id="dateIn"
-                                name="dateIn"
-                                type="text"
-                                autoComplete="dateIn"
+                                id="datein"
+                                name="datein"
+                                type="date"
+                                autoComplete="datein"
                                 placeholder="25-06-2021"
                                 onChange={handleExp}
-                                value={experience.dateIn}
+                                value={experience.datein}
                                 className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
                           <div className="flex flex-col w-[45%] ml-[5%]">
                             <label
-                              htmlFor="dateOut"
+                              htmlFor="dateout"
                               className="block font-medium leading-6 text-[#9EA0A5] w-[90%] text-xs"
                             >
                               Tahun Keluar
                             </label>
                             <div className="mt-2 w-[90%] mb-4">
                               <input
-                                id="dateOut"
-                                name="dateOut"
-                                type="text"
-                                autoComplete="dateOut"
+                                id="dateout"
+                                name="dateout"
+                                type="date"
+                                autoComplete="dateout"
                                 placeholder="15-08-2023"
                                 onChange={handleExp}
-                                value={experience.dateOut}
+                                value={experience.dateout}
                                 className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               />
                             </div>

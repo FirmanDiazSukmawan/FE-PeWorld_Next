@@ -28,8 +28,8 @@ export default function ModalUpdateExperience({ experience }) {
 
   const [exp, setExp] = useState({
     company: "",
-    dateIn: "",
-    dateOut: "",
+    datein: "",
+    dateout: "",
     description: "",
     profesi: "",
     image: image,
@@ -38,8 +38,8 @@ export default function ModalUpdateExperience({ experience }) {
   useEffect(() => {
     setExp({
       company: experience.company,
-      dateIn: experience.dateIn,
-      dateOut: experience.dateOut,
+      datein: experience.datein,
+      dateout: experience.dateout,
       description: experience.description,
       profesi: experience.profesi,
       image: experience.image,
@@ -157,9 +157,10 @@ export default function ModalUpdateExperience({ experience }) {
                   label="Tahun Masuk"
                   placeholder="Enter your Tahun Masuk"
                   variant="bordered"
-                  name="dateIn"
+                  name="datein"
                   onChange={handleChange}
-                  value={exp.dateIn}
+                  value={exp.datein}
+                  type="date"
                 />
                 <Input
                   autoFocus
@@ -169,9 +170,10 @@ export default function ModalUpdateExperience({ experience }) {
                   label="Tahun Keluar"
                   placeholder="Enter your Tahun Keluar"
                   variant="bordered"
-                  name="dateOut"
+                  name="dateout"
                   onChange={handleChange}
-                  value={exp.dateOut}
+                  value={exp.dateout}
+                  type="date"
                 />
                 <Textarea
                   autoFocus

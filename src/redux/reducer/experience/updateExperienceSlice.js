@@ -11,8 +11,8 @@ export const updateExperience = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append("company", exp.company);
-      formData.append("dateIn", exp.dateIn);
-      formData.append("dateOut", exp.dateOut);
+      formData.append("datein", exp.datein);
+      formData.append("dateout", exp.dateout);
       formData.append("description", exp.description);
       formData.append("profesi", exp.profesi);
       formData.append("image", image);

@@ -11,8 +11,8 @@ export const createExperience = createAsyncThunk(
     try {
       const response = await axios.post(`${url}/experience`, {
         company: experience.company,
-        dateIn: experience.dateIn,
-        dateOut: experience.dateOut,
+        datein: experience.datein,
+        dateout: experience.dateout,
         description: experience.description,
         profesi: experience.profesi,
         workers_id: users_id,

@@ -80,7 +80,7 @@ export default function CardCarousel(workers) {
                       <div
                         className="card-body"
                         style={{
-                          width: "75%",
+                          width: "90%",
                           justifyContent: "center",
                           alignItems: "center",
                           overflowY: "auto",
