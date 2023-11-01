@@ -3,14 +3,20 @@ import React, { useState } from "react";
 import img from "../../assets/bg1.png";
 import { Carousel } from "react-responsive-carousel";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function CardCarousel(workers) {
   // console.log(workers.workers.workers.data);
   const route = useRouter();
   const [loading, setLoading] = useState(false);
+  const token = Cookies.get("token");
 
   const handleClick = (workers_id) => {
-    route.push(`profileDetail/${workers_id}`);
+    if (token) {
+      route.push(`profileDetail/${workers_id}`);
+    } else {
+      route.push("login");
+    }
   };
 
   // Membagi data kartu menjadi grup yang berisi 3 kartu per grup

@@ -2,9 +2,15 @@ import { store } from "@/redux/store";
 import "@/styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }) {
+  const token = Cookies.get("token");
+  const route = useRouter();
+
+
   return (
     <>
       <NextUIProvider>

@@ -37,6 +37,7 @@ function NavbarLogin() {
   const recruiter = useSelector(getRecruiterByIdSelector);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const users_id = Cookies.get("users_id");
+  const token = Cookies.get("token");
 
   // console.log(recruiter);
 
@@ -54,11 +55,19 @@ function NavbarLogin() {
   };
 
   const profileCompany = (recruiter_id) => {
-    router.push(`/profile/${recruiter_id}`);
+    if (token) {
+      router.push(`/profile/${recruiter_id}`);
+    } else {
+      router.push("login");
+    }
   };
 
   const profile = (worker_id) => {
-    router.push(`/profile/${worker_id}`);
+    if (token) {
+      router.push(`/profile/${worker_id}`);
+    } else {
+      router.push("login");
+    }
   };
 
   const logout = () => {
@@ -69,7 +78,11 @@ function NavbarLogin() {
   };
 
   const chat = () => {
-    router.push("/chat");
+    if (token) {
+      router.push("/chat");
+    } else {
+      router.push("login");
+    }
   };
 
   const role = Cookies.get("role");

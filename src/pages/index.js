@@ -49,7 +49,11 @@ export default function Home(workers) {
   }, []);
 
   const handleClick = () => {
-    route.push("home");
+    if (login) {
+      route.push("home");
+    } else {
+      route.push("login");
+    }
   };
 
   return (
