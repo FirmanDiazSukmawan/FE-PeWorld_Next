@@ -100,7 +100,7 @@ export default function Home(workers) {
           <div className="flex flex-col w-full md:w-1/2 lg:w-1/2 lg:h-screen md:h-[100%] h-[50%] md:  justify-center items-center px-4">
             <div className="flex flex-col lg:w-[60%] w-[100%]">
               <h1 className="lg:text-4xl sm:text-xl text-base font-semibold">
-                Kenapa harus mencari tallent di peworld
+                Kenapa Harus Mencari Talent di PeWorld
               </h1>
               <div className="">
                 <div className="lg:text-lg  sm:text-base text-xs py-1">
@@ -183,7 +183,7 @@ export default function Home(workers) {
           </div>
         </main>
         <div className="hidden lg:flex md:flex flex-col w-[100%] items-center ">
-          <h1> Their opinion about peworld</h1>
+          <h1> Their Opinion About PeWorld</h1>
           {/* {loading
             ? "loading.."
             : workers?.workers?.data.map((item, index) => ( */}

@@ -18,10 +18,10 @@ import noData from "../../../public/noData";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
 import Head from "next/head";
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   try {
     const { query } = context;
-    const searchQuery = query.search || "";
+    const searchQuery = query?.search ?? "";
     // console.log(query);
     const res = await axios.get(
       `${url}/workers?sort=ASC&search=${searchQuery}`
@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: { searchQuery, workers },
+      revalidate: 15,
     };
   } catch (error) {
     console.log(error);
@@ -42,13 +43,14 @@ export async function getServerSideProps(context) {
 }
 
 export default function Index({ workers, searchQuery }) {
+  console.log(workers);
   // console.log(noData);
-  const [search, setSearch] = useState(searchQuery);
+  const [searchs, setSearch] = useState(searchQuery ?? "");
   const [searchResults, setSearchResults] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc"); // Misalnya, diurutkan secara naik (ascending)
   const [sortBy, setSortBy] = useState("nama");
   const [currentPage, setCurrentPage] = useState(1);
-  const workerPerPage = 4;
+  const workerPerPage = 3;
   const route = useRouter();
 
   // const handleSearch = () => {
@@ -66,7 +68,7 @@ export default function Index({ workers, searchQuery }) {
   const fetchSortedWorkers = async () => {
     try {
       const res = await axios.get(
-        `${url}/workers/?sort=${sortOrder}&search=${search}&sortBy=${sortBy}`
+        `${url}/workers/?sort=${sortOrder}&search=${searchs}&sortBy=${sortBy}`
       );
       const sortedWorkers = res.data;
       // console.log(sortedWorkers.data);
@@ -103,12 +105,14 @@ export default function Index({ workers, searchQuery }) {
     fetchSortedWorkers();
   }, []);
 
+  const totalWorkers = searchResults?.data?.length;
   const indexOfLastWorkers = currentPage * workerPerPage;
   const indexOfFirstWorkers = indexOfLastWorkers - workerPerPage;
   const currentWorkers = searchResults?.data?.slice(
     indexOfFirstWorkers,
     indexOfLastWorkers
   );
+  const totalPages = Math.ceil(totalWorkers / workerPerPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -119,6 +123,7 @@ export default function Index({ workers, searchQuery }) {
   const handleClick = (workers_id) => {
     route.push(`/profileDetail/${workers_id}`);
   };
+
   return (
     <>
       <Head>
@@ -162,7 +167,7 @@ export default function Index({ workers, searchQuery }) {
                   id="search"
                   className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search"
-                  value={search}
+                  value={searchs}
                   onChange={(e) => setSearch(e.target.value)}
                   onKeyDown={handleKeydown}
                 />
@@ -305,9 +310,7 @@ export default function Index({ workers, searchQuery }) {
                 </Player>
               )}
               <Pagination>
-                {Array.from({
-                  length: Math.ceil(workers?.data.length / workerPerPage),
-                }).map((_, index) => (
+                {Array.from({ length: totalPages }).map((_, index) => (
                   <Pagination.Item
                     key={index}
                     active={index + 1 === currentPage}
