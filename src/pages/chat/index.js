@@ -10,12 +10,6 @@ import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import Head from "next/head";
 
 export default function Index() {
-  const [activeTab, setActiveTab] = useState(false);
-
-  const handleClick = (tab) => {
-    setActiveTab(tab);
-  };
-
   return (
     <>
       <Head>
@@ -45,10 +39,10 @@ export default function Index() {
                     </div>
                     <div className="flex flex-col w-[100%] pl-2">
                       <div className="text-[#1F2A36] lg:text-base md:text-sm text-xs font-semibold">
-                        Jonas adam
+                        Louis Alberto
                       </div>
                       <div className="text-[#9B9B9B] lg:text-sm md:text-sm text-xs font-normal">
-                        Permisi kak, mau tanya...
+                        Hello im interest with u can we disccus more?
                       </div>
                     </div>
                   </div>
@@ -75,13 +69,20 @@ export default function Index() {
                       </div>
                       <div className="flex flex-col w-[100%] pl-2">
                         <div className="text-[#1F2A36] lg:text-base md:text-sm text-xs font-semibold">
-                          Jonas adam
+                          Louis Alberto
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div> tes</div>
+                <div className="flex w-[100%] items-center flex-col space-y-3">
+                  <div className="bg-slate-200 w-[90%] rounded-md px-1">
+                    Hello im interest with u can we disccus more?
+                  </div>
+                  <div className="bg-slate-200 w-[90%] rounded-md px-1 text-end">
+                    yeah alright i will discus
+                  </div>
+                </div>
               </div>
               <div className="mt-2 w-[90%] mb-4 justify-center items-center mx-auto flex flex-row">
                 <input

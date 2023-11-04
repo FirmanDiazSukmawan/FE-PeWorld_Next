@@ -75,7 +75,7 @@ export default function Home(workers) {
                 bersama kami
               </p>
               <buttons
-                className="bg-[#5E50A1] text-[#FFF] lg:text-lg text-xs lg:w-[45%] w-[100%] h-[5vh] rounded"
+                className="bg-[#5E50A1] text-[#FFF] lg:text-lg text-xs lg:w-[45%] w-[100%] h-[5vh] rounded flex justify-center items-center"
                 onClick={handleClick}
               >
                 Mulai Dari Sekarang

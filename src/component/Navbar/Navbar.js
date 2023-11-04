@@ -57,7 +57,7 @@ function Navbar() {
                     Login
                   </button>
                 </Link>
-                <Link href="/login" className="nav-link">
+                <Link href="/register" className="nav-link">
                   <button
                     className="btn"
                     style={{

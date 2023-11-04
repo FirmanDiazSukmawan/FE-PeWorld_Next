@@ -201,7 +201,7 @@ export default function Index() {
                       </button>
                       <h5 className="font-normal text-base text-[#1F2A36] pt-2">
                         Anda belum punya akun?
-                        <Link href="register" className="text-[#FBB017] no-underline pl-1">
+                        <Link href="/register" className="text-[#FBB017] no-underline pl-1">
                           Daftar Disini
                         </Link>
                       </h5>
