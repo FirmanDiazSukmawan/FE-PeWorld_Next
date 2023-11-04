@@ -16,7 +16,7 @@ import NavbarLogin from "@/component/navbarLogin/navbarLogin";
 import Cookies from "js-cookie";
 const inter = Inter({ subsets: ["latin"] });
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const res = await axios.get(`${url}/workers`);
     const workers = res.data;
@@ -25,7 +25,6 @@ export async function getStaticProps() {
 
     return {
       props: { workers },
-      revalidate: 30,
     };
   } catch (error) {
     console.log(error);
