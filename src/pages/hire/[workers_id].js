@@ -12,7 +12,7 @@ import { createHire } from "@/redux/reducer/hire/createHireSlice";
 import { ToastContainer } from "react-toastify";
 import Head from "next/head";
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   try {
     const { params } = context;
     const { workers_id } = params;
@@ -24,7 +24,6 @@ export async function getStaticProps(context) {
 
     return {
       props: { workers },
-      revalidate: 15,
     };
   } catch (error) {
     console.log(error);
@@ -64,7 +63,7 @@ export default function Index({ workers }) {
       console.log(err);
     }
   };
-  console.log(data);
+  console.log(workers);
 
   return (
     <>
@@ -280,26 +279,4 @@ export default function Index({ workers }) {
       </div>
     </>
   );
-}
-
-export async function getStaticPaths() {
-  try {
-    const res = await axios.get(`${url}/workers`);
-    const workers = res.data;
-
-    // Ensure that workers data exists and is an array
-    if (Array.isArray(workers.data)) {
-      const paths = workers.data.map((worker) => ({
-        params: { workers_id: String(worker.users_id) },
-      }));
-      return { paths, fallback: "blocking" };
-    } else {
-      // Handle the case where workers data is not an array
-      console.error("Workers data is not an array:", workers);
-      return { paths: [], fallback: "blocking" };
-    }
-  } catch (error) {
-    console.error("Error fetching workers data:", error);
-    return { paths: [], fallback: "blocking" };
-  }
 }

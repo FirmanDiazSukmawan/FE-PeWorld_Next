@@ -18,7 +18,7 @@ import noData from "../../../public/noData";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
 import Head from "next/head";
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   try {
     const { query } = context;
     const searchQuery = query?.search ?? "";
@@ -32,7 +32,6 @@ export async function getStaticProps(context) {
 
     return {
       props: { searchQuery, workers },
-      revalidate: 15,
     };
   } catch (error) {
     console.log(error);
@@ -47,7 +46,7 @@ export default function Index({ workers, searchQuery }) {
   // console.log(noData);
   const [searchs, setSearch] = useState(searchQuery ?? "");
   const [searchResults, setSearchResults] = useState([]);
-  const [sortOrder, setSortOrder] = useState("asc"); // Misalnya, diurutkan secara naik (ascending)
+  const [sortOrder, setSortOrder] = useState("asc");
   const [sortBy, setSortBy] = useState("nama");
   const [currentPage, setCurrentPage] = useState(1);
   const workerPerPage = 3;
