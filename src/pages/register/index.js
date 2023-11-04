@@ -10,8 +10,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 
-export async function getServerSideProps() {
-  const initialData = {
+export default function Index() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [data, setData] = useState({
     nama: "",
     email: "",
     perusahaan: "",
@@ -19,18 +20,7 @@ export async function getServerSideProps() {
     phone: "",
     password: "",
     confirmPassword: "",
-  };
-
-  return {
-    props: {
-      initialData,
-    },
-  };
-}
-
-export default function Index(initialData) {
-  const [showPassword, setShowPassword] = useState(false);
-  const [data, setData] = useState(initialData);
+  });
   const dispatch = useDispatch();
   const route = useRouter();
 
