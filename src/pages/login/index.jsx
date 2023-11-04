@@ -81,7 +81,7 @@ export default function Index() {
             <div className="sm:col-span-4 w-[50%]">
               <div className="flex flex-col -mt-3">
                 <h1 className="md:text-3xl text-[#1F2A36] text-2xl font-semibold">Halo, Pewpeople</h1>
-                <p className="md:text-base text-sm pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+                <p className="md:text-base text-sm pt-4">Ayo segera cari kandidat untuk perusahaan anda</p>
               </div>
               <Tabs
                   defaultActiveKey="Pekerja"

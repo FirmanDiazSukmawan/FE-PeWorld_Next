@@ -28,8 +28,7 @@ export default function Footer() {
             </div>
           </a>
           <h1 className="text-[#fff] text-base md:w-[100%] lg:w-[25%] text-w-[100%]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-            ipsum et dui rhoncus auctor.
+            Kembangkan karier Anda dengan layanan pencarian kerja kami.
           </h1>
         </div>
 

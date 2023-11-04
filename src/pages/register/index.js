@@ -97,8 +97,7 @@ export default function Index(initialData) {
                   Halo, Pewpeople
                 </h1>
                 <p className="md:text-base text-sm pt-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  euismod ipsum et dui rhoncus auctor.
+                  Ayo segera cari Talent terbaik untuk kebutuhan perusahaan anda
                 </p>
               </div>
               <Tabs
@@ -219,7 +218,7 @@ export default function Index(initialData) {
                         class="rounded-md bg-[#FBB017] w-[100%] h-[5vh] hover:bg-blue-200 text-white text-base"
                         onClick={handleRegWorker}
                       >
-                        Masuk
+                        Register
                       </button>
                       <h5 className="font-normal text-base text-[#1F2A36] pt-2">
                         Anda sudah punya akun?

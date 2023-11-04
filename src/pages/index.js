@@ -71,15 +71,15 @@ export default function Home(workers) {
                 Talenta terbaik negri untuk perubahan revolusi 4.0
               </h1>
               <p className="lg:text-lg sm:text-base text-xs">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Cari talenta terbaik untuk perusahaan anda agar berkembang
+                bersama kami
               </p>
-              <button
+              <buttons
                 className="bg-[#5E50A1] text-[#FFF] lg:text-lg text-xs lg:w-[45%] w-[100%] h-[5vh] rounded"
                 onClick={handleClick}
               >
                 Mulai Dari Sekarang
-              </button>
+              </buttons>
             </div>
           </div>
           <div className="flex w-[80%] lg:w-1/2 md:w-1/2 lg:h-screen md:h-[100%] h-[50%]     lg:px-5  px-1 justify-center md:items-start lg:items-center ">
@@ -106,19 +106,21 @@ export default function Home(workers) {
               <div className="">
                 <div className="lg:text-lg  sm:text-base text-xs py-1">
                   <i className="bi bi-check-circle-fill text-[#5E50A1] pr-1 "></i>
-                  Lorem ipsum dolor sit amet.
+                  Kami adalah sumber terpercaya
                 </div>
                 <div className="lg:text-lg sm:text-base text-xs py-1">
                   <i className="bi bi-check-circle-fill text-[#5E50A1] pr-1"></i>
-                  Lorem ipsum dolor sit amet.
+                  Dengan tingkat akurasi dan keberhasilan yang tinggi dalam
+                  pencarian talent
                 </div>
                 <div className="lg:text-lg sm:text-base text-xs py-1">
                   <i className="bi bi-check-circle-fill text-[#5E50A1] pr-1"></i>
-                  Lorem ipsum dolor sit amet.
+                  kami menciptakan kemitraan yang langgeng untuk pertumbuhan
+                  bisnis Anda.
                 </div>
                 <div className="lg:text-lg sm:text-base text-xs py-1">
                   <i className="bi bi-check-circle-fill text-[#5E50A1] pr-1"></i>
-                  Lorem ipsum dolor sit amet.
+                  Kami memiliki jaringan luas dan akses ke kandidat berkualitas
                 </div>
               </div>
             </div>
@@ -131,8 +133,7 @@ export default function Home(workers) {
                 Skill Tallent
               </h1>
               <h1 className="lg:text-xl sm:text-lg text-base font-normal">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Kami memiliki kandidat yang memiliki skill berikut
               </h1>
               <div className="flex flex-row ">
                 <div>
@@ -198,7 +199,7 @@ export default function Home(workers) {
         <div className="flex flex-row justify-around items-center w-screen h-[20vh] my-5">
           <div className="flex flex-row justify-between items-center w-[80%] h-[100%] bg-[#5E50A1] rounded-3xl px-14">
             <div className="text-[#fff] font-sans lg:text-2xl sm-text-xl text-lg lg:w-[50%] sm:w-[50%] w-[60%] ">
-              Lorem ipsum dolor sit amet
+              Ayo mulai dari sekarang
             </div>
             <button className="w-[40%] sm:w-[50%] lg:w-[20%] h-[40%] bg-white text-[#796EAF] lg:text-base sm:text-sm text-xs rounded-xl">
               Mulai Dari Sekarang
