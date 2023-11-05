@@ -9,7 +9,7 @@
   <p align="center">
     <a href="https://github.com/xTats/FE-PeWorld_Next"><strong>Explore the docs »</strong></a>
     <br />
-  <a href="https://peworld-fawn.vercel.app/">View Demo</a>
+  <a href="https://peworld-sigma.vercel.app/">View Demo</a>
     ·
     <a href="https://be-pe-world.vercel.app/">Api Demo</a> -->
   </p>
