@@ -157,16 +157,16 @@ npm i / npm install
     <td>Add Portofolio</td>
   </tr>
 
-  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/ba1764cf-a060-4496-9ef3-febc895d470d"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/a3ced679-780a-4372-b439-cad58df8c6ca" border="0" alt="3" /> </td>
+  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/adc0c811-ca6e-4697-98e4-e3c207d4a048"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/4fcf4250-3591-4d5c-9c61-f37f8607a605" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Edit Portofolio</td>
     <td>Edit Experience</td>
   </tr>
 
-  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/b77d8a81-f5a1-4c2c-872f-77fee2092166"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/0dabe04b-1d9e-4246-9b62-4f8c115939e1" border="0" alt="3" /> </td>
+  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/ec34e010-c003-48a5-9cbd-420e00f0263d"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/b2e5f125-f2fd-46e8-9e8b-318b8f666472" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Profile Recruiter</td>
