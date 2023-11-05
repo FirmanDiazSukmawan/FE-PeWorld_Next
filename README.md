@@ -1,4 +1,4 @@
-![carousel](https://github.com/xTats/FE-PeWorld_Next/assets/122331956/a4606da6-edca-400b-8cd6-8cb2d0f3a878)# FE-RECIPE-Redux-mix-react
+# FE-PeWorld_Next
 
 <br />
 <p align="center">
@@ -114,15 +114,16 @@ npm i / npm install
   </tr>
   <tr>
     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/0843c904-0ca7-43bb-8102-3ed05b50ab68" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/4fe8e385-a60d-48fc-aa64-02927f96fcd9"  border="0" alt="4" /></td>
+     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/4d00d884-0c65-489d-b1e0-067de7dc8229"  border="0" alt="4" /></td>
   </tr>
+
 
    <tr>
      <td>Home Page</td>
       <td>Detail Profile</td>
   </tr>
     <tr>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/2b5805ed-89aa-4054-92a1-d86f9d87057f" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/02d512f9-bd5c-450f-878a-6d07a6754135" border="0" alt="3" /> </td>
      <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/40dc53bc-a05a-411a-ac09-c79cd3b94419"  border="0" alt="4" /></td>
   </tr>
   
@@ -132,16 +133,17 @@ npm i / npm install
   </tr>
     <tr>
 <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/d39edf0e-d652-4ad8-888d-7ef46c61f617"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/9a91f90b-23cc-4070-8273-cd04f1fc4c1e" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/b8685055-309d-4df0-b1a1-3b04d2e6210e" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Chat</td>
     <td>Profile Worker Portofolio</td>
   </tr>
 
-<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/1e14bab5-c9d0-4546-b17b-11b6097af10d"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/6ba165f0-814b-49d4-bdcc-8fc7e4c4f193" border="0" alt="3" /> </td>
+<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/15819f08-df20-4a9c-9f45-535b70d8ec3e"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/f9e97beb-01f5-4e75-9c0f-8bea9257c6e5" border="0" alt="3" /> </td>
   </tr>
+
    <tr>
      <td>Profile Worker Experiece</td>
     <td>Edit Profile Worker</td>
