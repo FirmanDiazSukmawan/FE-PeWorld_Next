@@ -128,10 +128,10 @@ export default function Index({ workers, searchQuery }) {
       <Head>
         <title>PeWorld</title>
       </Head>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden h-screen">
         {/* <Navbar /> */}
         <NavbarLogin />
-        <div className="h-screen w-screen">
+        <div className="w-screen">
           <div className="flex w-full h-10vh bg-[#5E50A1]">
             <h1 className="text-[#FFF] text-2xl px-20 lg:px-36  ">Top Jobs</h1>
           </div>
@@ -215,11 +215,11 @@ export default function Index({ workers, searchQuery }) {
               {currentWorkers?.length > 0 ? (
                 currentWorkers?.map((item, index) => (
                   <div
-                    className="card mb-4"
+                    className="card mb-3"
                     style={{ width: "100%", justifyContent: "space-between" }}
                     key={index}
                   >
-                    <div className="row items-center w-[100%] lg:h-[200px] justify-around">
+                    <div className="row items-center w-[100%] lg:h-[190px] md:[180px] justify-around">
                       <div className="col-md-3 items-center justify-center">
                         {item.image && (
                           <Image
