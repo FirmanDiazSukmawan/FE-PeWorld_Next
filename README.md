@@ -165,8 +165,8 @@ npm i / npm install
     <td>Edit Experience</td>
   </tr>
 
-  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/ec34e010-c003-48a5-9cbd-420e00f0263d"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/b2e5f125-f2fd-46e8-9e8b-318b8f666472" border="0" alt="3" /> </td>
+  <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/3b362ed1-5fd6-49db-85e8-5b0bf3369a20"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/76ba1faa-478e-4133-bcfc-c444c1d5b035" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Profile Recruiter</td>
