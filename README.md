@@ -149,8 +149,8 @@ npm i / npm install
     <td>Edit Profile Worker</td>
   </tr>
 
-<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/7b0b1595-300b-4d32-88f8-8e30f106aef7"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/685d6ded-a2eb-4c7d-8a23-821747f1d4b0" border="0" alt="3" /> </td>
+<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/d8379aaa-f4d3-4a6b-9210-05b73ac85c25"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/c901ff29-5c23-42f1-91c6-0581a1775169" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>update Skills & Add Experience Worker</td>
