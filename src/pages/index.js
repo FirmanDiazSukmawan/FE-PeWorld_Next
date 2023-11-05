@@ -64,7 +64,7 @@ export default function Home(workers) {
 
       <div className="w-screen h-screen overflow-x-hidden">
         {!login ? <Navbar /> : <NavbarLogin />}
-        <main className="flex w-full h-[50vh] lg:h-[75vh] md:[75vh] justify-center lg:flex-row md:flex-row flex-col items-center">
+        <main className="flex w-full h-[50vh] lg:h-[85vh] md:[75vh] justify-center lg:flex-row md:flex-row flex-col items-center">
           <div className="flex flex-col w-full md:w-1/2 lg:w-1/2 lg:h-screen md:h-[100%] h-[50%] md:  justify-center items-center px-4">
             <div className="flex flex-col lg:w-[60%] w-[100%]">
               <h1 className="lg:text-4xl sm:text-xl text-base font-semibold">
@@ -82,7 +82,7 @@ export default function Home(workers) {
               </buttons>
             </div>
           </div>
-          <div className="flex w-[80%] lg:w-1/2 md:w-1/2 lg:h-screen md:h-[100%] h-[50%]     lg:px-5  px-1 justify-center md:items-start lg:items-center ">
+          <div className="flex w-[80%] lg:w-1/2 md:w-1/2 lg:h-screen md:h-[100%] h-[50%] lg:px-5  px-1 justify-center md:items-start lg:items-center ">
             <Image
               src={bg1}
               className="w-[100%] h-[100%] lg:w-[85%] md:w-[90%] md:h-[80%] lg:h-[65%] rounded-lg"

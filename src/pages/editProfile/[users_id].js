@@ -97,7 +97,7 @@ export default function Index({ workers }) {
       description: worker?.description,
     });
     setSkills(worker?.skills);
-  }, [worker, workers.length]);
+  }, [worker, workers?.length]);
 
   const handleChange = (e) => {
     setData({
