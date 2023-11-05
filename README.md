@@ -1,4 +1,4 @@
-# FE-RECIPE-Redux-mix-react
+![carousel](https://github.com/xTats/FE-PeWorld_Next/assets/122331956/a4606da6-edca-400b-8cd6-8cb2d0f3a878)# FE-RECIPE-Redux-mix-react
 
 <br />
 <p align="center">
@@ -104,25 +104,26 @@ npm i / npm install
   </tr>
 
   <tr>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/7ae5fc98-dc3f-4ec0-bdfe-e0858e0936a2" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/57fddb72-0118-4fb3-ac0a-817407f3890a"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/6edba68d-37c8-4ce4-8347-3af600bff154" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/9ff136ad-07bd-46c0-84f9-15087bcaf05c"  border="0" alt="4" /></td>
+    
   </tr>
    <tr>
     <td>Landing Page</td>
      <td>Carousel</td>
   </tr>
   <tr>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/cd6dc5e1-c00e-4b40-beaf-76433dd7430a" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/0843c904-0ca7-43bb-8102-3ed05b50ab68" border="0" alt="3" /> </td>
      <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/4fe8e385-a60d-48fc-aa64-02927f96fcd9"  border="0" alt="4" /></td>
   </tr>
-  
+
    <tr>
      <td>Home Page</td>
       <td>Detail Profile</td>
   </tr>
     <tr>
     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/2b5805ed-89aa-4054-92a1-d86f9d87057f" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/787c3c42-e3d3-46b5-a0e4-0e37d27a6fb6"  border="0" alt="4" /></td>
+     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/40dc53bc-a05a-411a-ac09-c79cd3b94419"  border="0" alt="4" /></td>
   </tr>
   
    <tr>
@@ -130,7 +131,7 @@ npm i / npm install
     <td>Notification</td>
   </tr>
     <tr>
-<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/1e14bab5-c9d0-4546-b17b-11b6097af10d"  border="0" alt="4" /></td>
+<td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/d39edf0e-d652-4ad8-888d-7ef46c61f617"  border="0" alt="4" /></td>
     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/9a91f90b-23cc-4070-8273-cd04f1fc4c1e" border="0" alt="3" /> </td>
   </tr>
    <tr>
