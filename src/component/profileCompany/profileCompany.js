@@ -42,7 +42,7 @@ export default function ProfileCompany({ recruiters }) {
                         height={150}
                       />
                     ) : (
-                      <div> no image</div>
+                      <div className="flex justify-center items-center"> no image</div>
                     )}
                   </div>
                   <div className="flex flex-col lg:w-[50%] md:w-[70%] w-[75%] justify-center items-center">

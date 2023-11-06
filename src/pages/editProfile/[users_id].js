@@ -251,7 +251,10 @@ export default function Index({ workers }) {
                             height={150}
                           />
                         ) : (
-                          <div> No Image</div>
+                          <div className="flex justify-center items-center">
+                            {" "}
+                            No Image
+                          </div>
                         )}
                       </div>
                       <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[100%] flex-wrap">

@@ -110,7 +110,7 @@ export default function Index({ recruiters }) {
         <ToastContainer />
         {/* <Navbar /> */}
         <NavbarLogin />
-        <div className="relative h-screen">
+        <div className="relative">
           {/* <ToastContainer /> */}
           <div className="flex w-full lg:h-[25vh] md:h-[25vh] h-[15vh] bg-[#5E50A1] "></div>
           <div className="flex justify-center lg:flex-row md:flex-row flex-col w-screen lg:px-[10%] md:px[10%] px-[5%] bg-[#F6F7F8]">
@@ -145,7 +145,9 @@ export default function Index({ recruiters }) {
                         height={150}
                       />
                     ) : (
-                      <div>No Image</div>
+                      <div className="flex justify-center items-center">
+                        No Image
+                      </div>
                     )}
                   </div>
                   <div className="flex flex-col lg:w-[90%] md:w-[90%] w-[100%] flex-wrap">
