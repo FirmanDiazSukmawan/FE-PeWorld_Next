@@ -86,8 +86,8 @@ npm i / npm install
 
 <table>
  <tr>
-    <td><img width="350px" src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/23563c92-8d09-4f8a-b5bb-f0ff24384640" border="0" alt="1" /></td>
-    <td> <img width="350px" src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/f2581814-2cd1-464a-94be-bd75d5339ab1"  border="0"  alt="2" /></td>
+    <td><img width="350px" src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/c4486713-b2d8-4279-b116-36e283fce9cf" border="0" alt="1" /></td>
+    <td> <img width="350px" src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/7a9f8dfe-0cb3-4d09-a66f-524418b32a1b"  border="0"  alt="2" /></td>
   </tr>
    <tr>
     <td>Login Worker</td>
@@ -95,8 +95,8 @@ npm i / npm install
   </tr>
   
   <tr>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/833c8826-0ef1-41d6-967c-bfe458dd0fb7" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/787ef418-040d-4bee-abba-ea6d0b7eeb13"  border="0" alt="4" /></td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/d2eaab10-e984-49a2-b50a-ec7fab1a4814" border="0" alt="3" /> </td>
+     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/c1b790ba-aa31-41db-ad48-2e89eef1531c"  border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Register Worker</td>
