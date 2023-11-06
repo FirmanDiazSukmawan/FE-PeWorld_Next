@@ -133,7 +133,7 @@ npm i / npm install
   </tr>
     <tr>
 <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/d39edf0e-d652-4ad8-888d-7ef46c61f617"  border="0" alt="4" /></td>
-    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/b8685055-309d-4df0-b1a1-3b04d2e6210e" border="0" alt="3" /> </td>
+    <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/a58a21fe-59d0-4416-b1dd-486a73822028" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Chat</td>
