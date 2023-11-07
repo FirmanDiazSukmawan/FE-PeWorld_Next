@@ -114,7 +114,7 @@ npm i / npm install
   </tr>
   <tr>
     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/0843c904-0ca7-43bb-8102-3ed05b50ab68" border="0" alt="3" /> </td>
-     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/4d00d884-0c65-489d-b1e0-067de7dc8229"  border="0" alt="4" /></td>
+     <td><img width="350px"  src="https://github.com/xTats/FE-PeWorld_Next/assets/122331956/3ac8f9bf-454c-4190-9391-9e3be560a86e"  border="0" alt="4" /></td>
   </tr>
 
 
