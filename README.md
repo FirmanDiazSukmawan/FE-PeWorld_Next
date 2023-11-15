@@ -28,7 +28,8 @@
 
 # About The Project
 
-"PeWorld" is a website for job seekers and also for companies in need of their employees on PeWorld. Workers can showcase their work experience and project portfolios they have worked on, while recruiters can search for workers according to the candidates needed by the company.
+"PeWorld" is a website for job seekers and also for companies that need employees. Workers can show their work experience and project portfolios they have worked on, while recruiters can search for workers according to the candidates needed by the company.
+
 
 ## Built With
 
