@@ -7,7 +7,7 @@
   </div>
   <h3 align="center">PeWorld</h3>
   <p align="center">
-    <a href="https://github.com/xTats/FE-PeWorld_Next"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/FirmanDiazSukmawan/FE-PeWorld_Next"><strong>Explore the docs »</strong></a>
     <br />
   <a href="https://peworld-sigma.vercel.app/">View Demo</a>
     ·
@@ -190,10 +190,10 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Related Project
 
-:rocket: [`Backend-PeWorld`](https://github.com/xTats/BE-PeWorld)
+:rocket: [`Backend-PeWorld`](https://github.com/FirmanDiazSukmawan/BE-PeWorld)
 
-:rocket: [`FE-PeWorld`](https://github.com/xTats/FE-PeWorld_Next)
+:rocket: [`FE-PeWorld`](https://github.com/FirmanDiazSukmawan/FE-PeWorld_Next)
 
 :rocket: [`Demo MyRecipe Web`](https://peworld-fawn.vercel.app/)
 
-Project link : [https://github.com/xTats/FE-PeWorld_Next](https://github.com/xTats/FE-PeWorld_Next)]
+Project link : [https://github.com/xTats/FE-PeWorld_Next](https://github.com/FirmanDiazSukmawan/FE-PeWorld_Next)]
